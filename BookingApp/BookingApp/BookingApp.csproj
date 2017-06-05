@@ -262,6 +262,16 @@
     <Compile Include="Models\BAContext.cs" />
     <Compile Include="Models\BAIdentityUser.cs" />
     <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\DataModel\Accommodation.cs" />
+    <Compile Include="Models\DataModel\AccommodationType.cs" />
+    <Compile Include="Models\DataModel\Comment.cs" />
+    <Compile Include="Models\DataModel\Country.cs" />
+    <Compile Include="Models\DataModel\Place.cs" />
+    <Compile Include="Models\DataModel\Region.cs" />
+    <Compile Include="Models\DataModel\Room.cs" />
+    <Compile Include="Models\DataModel\RoomReservation.cs" />
+    <Compile Include="Models\DataModel\User.cs" />
+    <Compile Include="Models\DataModel\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
