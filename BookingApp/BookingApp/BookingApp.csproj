@@ -279,6 +279,7 @@
     <Compile Include="Models\DataModel\Room.cs" />
     <Compile Include="Models\DataModel\RoomReservations.cs" />
     <Compile Include="Models\DataModel\User.cs" />
+    <Compile Include="Models\DataModel\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
