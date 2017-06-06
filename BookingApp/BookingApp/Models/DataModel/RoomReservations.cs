@@ -10,7 +10,7 @@ namespace BookingApp.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Timestamp { get; set; }//kog tipa ovo da bude
-        public List<RoomReservations> roomReservations { get; set; }
         public List<Room> Rooms { get; set; }
+        public List<User> Users { get; set; }
     }
 }

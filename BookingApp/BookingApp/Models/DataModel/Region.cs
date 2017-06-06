@@ -10,6 +10,7 @@ namespace BookingApp.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Place> Places { get; set; }
-        public Country country { get; set; }
+        public Country Country { get; set; }
+        public Region() { }
     }
 }
