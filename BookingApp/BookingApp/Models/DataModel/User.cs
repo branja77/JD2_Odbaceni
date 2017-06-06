@@ -15,7 +15,6 @@ namespace BookingApp.Models
         public List<Comment> Comments { get; set; }
         public List<RoomReservation> RoomReservations { get; set; }
         public List<Accommodation> Accomodations { get; set; }
-        public UserType TypeOfUser { get; set; }
         public User() { }
     }
 }
