@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,9 +10,11 @@ namespace BookingApp.Models
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public DateTime Timestamp { get; set; }//kog tipa ovo da bude
-        public List<Room> Rooms { get; set; }
-        public List<User> Users { get; set; }
+        public DateTime Timestamp { get; set; }
+        [Required]
+        public Room Room { get; set; }
+        [Required]
+        public User User { get; set; }
         public RoomReservation() { }
     }
 }
