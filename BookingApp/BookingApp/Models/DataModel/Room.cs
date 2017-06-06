@@ -13,6 +13,7 @@ namespace BookingApp.Models
         public int BedCount { get; set; }
         public string Description { get; set; }
         public double PricePerNight { get; set; }
+        [Required]
         public List<RoomReservation> RoomReservations { get; set; }
         [Required]
         public Accommodation Accomodation { get; set; }
