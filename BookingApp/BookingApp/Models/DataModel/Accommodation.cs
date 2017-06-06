@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -18,8 +19,11 @@ namespace BookingApp.Models
         public bool Approved { get; set; }
         public List<Room> Rooms { get; set; }
         public List<Comment> Comments { get; set; }
+        [Required]
         public AccommodationType AccomodationType { get; set; }
+        [Required]
         public Place Place { get; set; }
+        [Required]
         public User Owner { get; set; }
         public Accommodation() { }
     }
