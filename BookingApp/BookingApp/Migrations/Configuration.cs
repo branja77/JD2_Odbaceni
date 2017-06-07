@@ -69,14 +69,26 @@ namespace BookingApp.Migrations
                 userManager.AddToRole(user1.Id, "Admin");
             }
 
-            var user = new AppUser();
-            user.Username = "branja";
-            user.Password = "branja";
-            user.Id = 123123;
-            user.Email = "branko.savic94@gmail.com";
+            BAIdentityUser user = new BAIdentityUser() { Id = "branja", UserName = "branja", Email = "branko.savic94@gmail.com", PasswordHash = BAIdentityUser.HashPassword("branja") };
+
+            if (!context.Users.Any(u => u.UserName == "branja"))
+            {
+                userManager.Create(user);
+                userManager.AddToRole(user.Id, "Manager");
+            }
+
+            if (!context.Users.Any(u => u.UserName == "pepi"))
+            {
+                var user1 = new BAIdentityUser() { Id = "pepi", UserName = "pepi", Email = "branko.savic94@gmail.com", PasswordHash = BAIdentityUser.HashPassword("pepi") };
+                userManager.Create(user1);
+                userManager.AddToRole(user1.Id, "AppUser");
+            }
+
             user.Accomodations = new List<Accommodation>();
             user.Comments = new List<Comment>();
             user.RoomReservations = new List<RoomReservation>();
+
+            context.SaveChanges();
 
             Country country = new Country();
             country.Id = 1;
@@ -118,6 +130,7 @@ namespace BookingApp.Migrations
             acc.Place = place;
             acc.Rooms = new List<Room>();
             accType.Accommodations.Add(acc);
+            user.Accomodations.Add(acc);
 
             Room room = new Room();
             room.Accomodation = acc;
@@ -136,6 +149,7 @@ namespace BookingApp.Migrations
             roomRes.User = user;
             roomRes.Room = room;
             roomRes.Id = 1;
+            user.RoomReservations.Add(roomRes);
 
             Comment comm = new Comment();
             comm.Accomodation = acc;
@@ -143,13 +157,13 @@ namespace BookingApp.Migrations
             comm.Text = "Dobra";
             comm.User = user;
             comm.Id = 1;
-
-            user.Accomodations.Add(acc);
             user.Comments.Add(comm);
-            user.RoomReservations.Add(roomRes);
+
+
+
+            
 
             try {
-                context.AppUsers.Add(user);
                 context.Accommodations.Add(acc);
                 context.AccommodationTypes.Add(accType);
                 context.Comments.Add(comm);

@@ -272,16 +272,15 @@
     <Compile Include="Migrations\201706040304228_Initial.Designer.cs">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706061029213_DeployBookingDatabase.cs" />
-    <Compile Include="Migrations\201706061029213_DeployBookingDatabase.Designer.cs">
-      <DependentUpon>201706061029213_DeployBookingDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201706070925118_Depl.cs" />
+    <Compile Include="Migrations\201706070925118_Depl.Designer.cs">
+      <DependentUpon>201706070925118_Depl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BAContext.cs" />
     <Compile Include="Models\BAIdentityUser.cs" />
-    <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\DataModel\Accommodation.cs" />
     <Compile Include="Models\DataModel\AccommodationType.cs" />
     <Compile Include="Models\DataModel\Comment.cs" />
@@ -290,7 +289,6 @@
     <Compile Include="Models\DataModel\Region.cs" />
     <Compile Include="Models\DataModel\Room.cs" />
     <Compile Include="Models\DataModel\RoomReservation.cs" />
-    <Compile Include="Models\DataModel\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\CustomJwtFormat.cs" />
@@ -373,8 +371,8 @@
     <EmbeddedResource Include="Migrations\201706040304228_Initial.resx">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706061029213_DeployBookingDatabase.resx">
-      <DependentUpon>201706061029213_DeployBookingDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706070925118_Depl.resx">
+      <DependentUpon>201706070925118_Depl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

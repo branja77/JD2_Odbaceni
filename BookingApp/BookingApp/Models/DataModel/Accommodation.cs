@@ -24,7 +24,7 @@ namespace BookingApp.Models
         [Required]
         public Place Place { get; set; }
         [Required]
-        public AppUser Owner { get; set; }
+        public BAIdentityUser Owner { get; set; }
         public Accommodation() { }
     }
 }

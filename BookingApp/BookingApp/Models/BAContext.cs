@@ -10,7 +10,7 @@ namespace BookingApp.Models
 {
     public class BAContext: IdentityDbContext<BAIdentityUser>
     {   
-        public virtual DbSet<AppUser> AppUsers { get; set; }
+        //public DbSet<BAIdentityUser> AppUsers { get; set; }
         public DbSet<Accommodation> Accommodations { get; set; }
         public DbSet<AccommodationType> AccommodationTypes { get; set; }
         public DbSet<Comment> Comments { get; set; }

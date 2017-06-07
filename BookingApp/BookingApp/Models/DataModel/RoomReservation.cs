@@ -15,7 +15,7 @@ namespace BookingApp.Models
         [Required]
         public Room Room { get; set; }
         [Required]
-        public AppUser User { get; set; }
+        public BAIdentityUser User { get; set; }
         public RoomReservation() { }
     }
 }

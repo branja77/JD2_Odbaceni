@@ -3,7 +3,7 @@ namespace BookingApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DeployBookingDatabase : DbMigration
+    public partial class Depl : DbMigration
     {
         public override void Up()
         {
@@ -21,13 +21,13 @@ namespace BookingApp.Migrations
                         ImageURL = c.String(),
                         Approved = c.Boolean(nullable: false),
                         AccomodationType_Id = c.Int(nullable: false),
-                        Owner_Id = c.Int(nullable: false),
+                        Owner_Id = c.String(nullable: false, maxLength: 128),
                         Place_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AccommodationTypes", t => t.AccomodationType_Id, cascadeDelete: false)
-                .ForeignKey("dbo.AppUsers", t => t.Owner_Id, cascadeDelete: false)
-                .ForeignKey("dbo.Places", t => t.Place_Id, cascadeDelete: false)
+                .ForeignKey("dbo.AspNetUsers", t => t.Owner_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Places", t => t.Place_Id, cascadeDelete: true)
                 .Index(t => t.AccomodationType_Id)
                 .Index(t => t.Owner_Id)
                 .Index(t => t.Place_Id);
@@ -49,11 +49,11 @@ namespace BookingApp.Migrations
                         Grade = c.Int(nullable: false),
                         Text = c.String(),
                         Accomodation_Id = c.Int(nullable: false),
-                        User_Id = c.Int(nullable: false),
+                        User_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Accommodations", t => t.Accomodation_Id, cascadeDelete: false)
-                .ForeignKey("dbo.AppUsers", t => t.User_Id, cascadeDelete: false)
+                .ForeignKey("dbo.AspNetUsers", t => t.User_Id, cascadeDelete: false)
                 .Index(t => t.Accomodation_Id)
                 .Index(t => t.User_Id);
             
@@ -66,11 +66,11 @@ namespace BookingApp.Migrations
                         EndDate = c.DateTime(nullable: false),
                         Timestamp = c.DateTime(nullable: false),
                         Room_Id = c.Int(nullable: false),
-                        User_Id = c.Int(nullable: false),
+                        User_Id = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Rooms", t => t.Room_Id, cascadeDelete: false)
-                .ForeignKey("dbo.AppUsers", t => t.User_Id, cascadeDelete: false)
+                .ForeignKey("dbo.AspNetUsers", t => t.User_Id, cascadeDelete: false)
                 .Index(t => t.Room_Id)
                 .Index(t => t.User_Id);
             
@@ -123,19 +123,26 @@ namespace BookingApp.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            AddColumn("dbo.AppUsers", "Username", c => c.String());
-            AddColumn("dbo.AppUsers", "Email", c => c.String());
-            AddColumn("dbo.AppUsers", "Password", c => c.String());
+            DropTable("dbo.AppUsers");
         }
         
         public override void Down()
         {
+            CreateTable(
+                "dbo.AppUsers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        FullName = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             DropForeignKey("dbo.Accommodations", "Place_Id", "dbo.Places");
             DropForeignKey("dbo.Places", "Region_Id", "dbo.Regions");
             DropForeignKey("dbo.Regions", "Country_Id", "dbo.Countries");
-            DropForeignKey("dbo.Accommodations", "Owner_Id", "dbo.AppUsers");
-            DropForeignKey("dbo.Comments", "User_Id", "dbo.AppUsers");
-            DropForeignKey("dbo.RoomReservations", "User_Id", "dbo.AppUsers");
+            DropForeignKey("dbo.Accommodations", "Owner_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Comments", "User_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.RoomReservations", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.RoomReservations", "Room_Id", "dbo.Rooms");
             DropForeignKey("dbo.Rooms", "Accomodation_Id", "dbo.Accommodations");
             DropForeignKey("dbo.Comments", "Accomodation_Id", "dbo.Accommodations");
@@ -150,9 +157,6 @@ namespace BookingApp.Migrations
             DropIndex("dbo.Accommodations", new[] { "Place_Id" });
             DropIndex("dbo.Accommodations", new[] { "Owner_Id" });
             DropIndex("dbo.Accommodations", new[] { "AccomodationType_Id" });
-            DropColumn("dbo.AppUsers", "Password");
-            DropColumn("dbo.AppUsers", "Email");
-            DropColumn("dbo.AppUsers", "Username");
             DropTable("dbo.Countries");
             DropTable("dbo.Regions");
             DropTable("dbo.Places");
