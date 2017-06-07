@@ -35,6 +35,7 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles ="Manager")]
         public IHttpActionResult PostAccommodation(Accommodation accommodation)
         {
             if (!ModelState.IsValid)
@@ -62,6 +63,7 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult PutAccommodation(int id, Accommodation accommodation)
         {
             if (!ModelState.IsValid)
@@ -101,6 +103,7 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Manager")]
         public IHttpActionResult DeleteAccommodation(int id)
         {
             Accommodation accommodation = db.Accommodations.Find(id);

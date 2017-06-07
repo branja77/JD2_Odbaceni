@@ -40,6 +40,7 @@ namespace BookingApp.Controllers
 
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "AppUser")]
         public IHttpActionResult PostRoomReservation(RoomReservation roomReservation)
         {
             if(!ModelState.IsValid)
@@ -71,6 +72,7 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "AppUser")]
         public IHttpActionResult PutRoomReservation(int id, RoomReservation roomReservation)
         {
             if(!ModelState.IsValid)
@@ -103,6 +105,7 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "AppUser")]
         public IHttpActionResult DeleteRoomReservation(int id)
         {
             RoomReservation roomReservation = db.RoomReservations.Find(id);

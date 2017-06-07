@@ -37,6 +37,7 @@ namespace BookingApp.Controllers
 
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "AppUser")]
         public IHttpActionResult PostComment(Comment comm)
         {
             if (!ModelState.IsValid)
@@ -64,6 +65,8 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "AppUser")]
+
         public IHttpActionResult PutComment(int id, Comment comm)
         {
             if (!ModelState.IsValid)
@@ -103,6 +106,7 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "AppUser")]
         public IHttpActionResult DeleteComment(int id)
         {
             Comment comm = db.Comments.Find(id);
