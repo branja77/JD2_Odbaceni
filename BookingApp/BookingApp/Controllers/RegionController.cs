@@ -12,44 +12,44 @@ using BookingApp.Models;
 
 namespace BookingApp.Controllers
 {
-    public class CountryController : ApiController
+    public class RegionController : ApiController
     {
         private BAContext db = new BAContext();
 
-        // GET: api/Country
-        public IQueryable<Country> GetCountries()
+        // GET: api/Region
+        public IQueryable<Region> GetRegions()
         {
-            return db.Countries;
+            return db.Regions;
         }
 
-        // GET: api/Country/5
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult GetCountry(int id)
+        // GET: api/Region/5
+        [ResponseType(typeof(Region))]
+        public IHttpActionResult GetRegion(int id)
         {
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            Region region = db.Regions.Find(id);
+            if (region == null)
             {
                 return NotFound();
             }
 
-            return Ok(country);
+            return Ok(region);
         }
 
-        // PUT: api/Country/5
+        // PUT: api/Region/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCountry(int id, Country country)
+        public IHttpActionResult PutRegion(int id, Region region)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != country.Id)
+            if (id != region.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(country).State = EntityState.Modified;
+            db.Entry(region).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace BookingApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CountryExists(id))
+                if (!RegionExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace BookingApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Country
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult PostCountry(Country country)
+        // POST: api/Region
+        [ResponseType(typeof(Region))]
+        public IHttpActionResult PostRegion(Region region)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Countries.Add(country);
+            db.Regions.Add(region);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = country.Id }, country);
+            return CreatedAtRoute("DefaultApi", new { id = region.Id }, region);
         }
 
-        // DELETE: api/Country/5
-        [ResponseType(typeof(Country))]
-        public IHttpActionResult DeleteCountry(int id)
+        // DELETE: api/Region/5
+        [ResponseType(typeof(Region))]
+        public IHttpActionResult DeleteRegion(int id)
         {
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            Region region = db.Regions.Find(id);
+            if (region == null)
             {
                 return NotFound();
             }
 
-            db.Countries.Remove(country);
+            db.Regions.Remove(region);
             db.SaveChanges();
 
-            return Ok(country);
+            return Ok(region);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace BookingApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CountryExists(int id)
+        private bool RegionExists(int id)
         {
-            return db.Countries.Count(e => e.Id == id) > 0;
+            return db.Regions.Count(e => e.Id == id) > 0;
         }
     }
 }
