@@ -10,8 +10,14 @@ export class AppComponent {
   ime = 'Branko';
   prezime = 'Savic';
   voce = [
-    {"naziv": "jabuka", "boja":"zelena"},
-    {"naziv": "kruska", "boja":"ljubicasta"},
-    {"naziv": "jagoda", "boja":"crvena"}
-  ]
+    {naziv: "jabuka", "boja":"zelena"},
+    {naziv: "kruska", "boja":"ljubicasta"},
+    {naziv: "jagoda", "boja":"crvena"}
+  ];
+
+ clickedItem = {naziv : "", "boja":""};
+
+   kliknutRed(Item){
+      this.clickedItem = Item;
+  }
 }
