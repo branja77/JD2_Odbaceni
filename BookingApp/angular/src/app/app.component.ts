@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  ime = 'Branko';
+  prezime = 'Savic';
+  voce = [
+    {"naziv": "jabuka", "boja":"zelena"},
+    {"naziv": "kruska", "boja":"ljubicasta"},
+    {"naziv": "jagoda", "boja":"crvena"}
+  ]
 }
