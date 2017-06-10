@@ -19,7 +19,9 @@ namespace BookingApp.Controllers
         [ResponseType(typeof(Comment))]
         public IHttpActionResult GetComment(int id)
         {
-            Comment comm = db.Comments.Find(id);
+            Comment comm = db.Comments.Include(u => u.Accomodation).
+                Include(u => u.User).
+                SingleOrDefault(u => u.Id == id);
             if (comm == null)
             {
                 return NotFound();
@@ -32,7 +34,7 @@ namespace BookingApp.Controllers
 
         public IQueryable GetComments()
         {
-            return db.Comments;
+            return db.Comments.Include(u => u.Accomodation).Include(u => u.User);
         }
 
 

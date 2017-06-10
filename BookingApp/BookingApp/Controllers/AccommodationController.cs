@@ -18,7 +18,11 @@ namespace BookingApp.Controllers
         [ResponseType(typeof(Accommodation))]
         public IHttpActionResult GetAccomodation(int id)
         {
-            Accommodation accomodation = db.Accommodations.Find(id);
+            Accommodation accomodation = db.Accommodations.Include(u => u.AccomodationType).
+                Include(u => u.Place).
+                Include(u => u.Owner).
+                SingleOrDefault(u => u.Id == id);
+
             if (accomodation == null)
             {
                 return NotFound();
@@ -31,7 +35,9 @@ namespace BookingApp.Controllers
 
         public IQueryable GetAccommodations()
         {
-            return db.Accommodations;
+            return db.Accommodations.Include(u => u.AccomodationType).
+                Include(u => u.Place).
+                Include(u => u.Owner);
         }
 
         [ResponseType(typeof(void))]
@@ -58,8 +64,6 @@ namespace BookingApp.Controllers
                 Console.WriteLine(ex.Message);
                 return BadRequest();
             }
-
-
         }
 
         [ResponseType(typeof(void))]

@@ -18,7 +18,7 @@ namespace BookingApp.Controllers
         [ResponseType(typeof(Place))]
         public IHttpActionResult GetPlace(int id)
         {
-            Place place = db.Places.Find(id);
+            Place place = db.Places.Include(u => u.Region).SingleOrDefault(u => u.Id == id);
             if (place == null)
             {
                 return NotFound();
@@ -31,7 +31,7 @@ namespace BookingApp.Controllers
 
         public IQueryable GetPlaces()
         {
-            return db.Places;
+            return db.Places.Include(u => u.Region);
         }
 
         // POST api/values

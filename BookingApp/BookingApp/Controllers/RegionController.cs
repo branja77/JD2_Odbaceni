@@ -19,14 +19,14 @@ namespace BookingApp.Controllers
         // GET: api/Region
         public IQueryable<Region> GetRegions()
         {
-            return db.Regions;
+            return db.Regions.Include(u => u.Country);
         }
 
         // GET: api/Region/5
         [ResponseType(typeof(Region))]
         public IHttpActionResult GetRegion(int id)
         {
-            Region region = db.Regions.Find(id);
+            Region region = db.Regions.Include(u => u.Country).SingleOrDefault(u => u.Id == id);
             if (region == null)
             {
                 return NotFound();

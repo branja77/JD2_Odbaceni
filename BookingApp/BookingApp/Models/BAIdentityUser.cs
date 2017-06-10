@@ -9,14 +9,18 @@ using System.Collections;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace BookingApp.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class BAIdentityUser : IdentityUser
     {
+        [JsonIgnore]
         public List<Comment> Comments { get; set; }
+        [JsonIgnore]
         public List<RoomReservation> RoomReservations { get; set; }
+        [JsonIgnore]
         public List<Accommodation> Accomodations { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<BAIdentityUser> manager, string authenticationType)
         {

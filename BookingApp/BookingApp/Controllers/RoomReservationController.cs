@@ -18,8 +18,10 @@ namespace BookingApp.Controllers
         [ResponseType(typeof(RoomReservation))]
         public IHttpActionResult GetRoomReservation(int id)
         {
-            RoomReservation roomReservation = db.RoomReservations.Find(id);
-            if(roomReservation == null)
+            RoomReservation roomReservation = db.RoomReservations.Include(u => u.Room).
+                Include(u => u.User).
+                SingleOrDefault(u => u.Id == id);
+            if (roomReservation == null)
             {
                 return BadRequest();
             }
@@ -34,7 +36,7 @@ namespace BookingApp.Controllers
 
         public IQueryable GetRooms()
         {
-            return db.RoomReservations;
+            return db.RoomReservations.Include(u => u.Room).Include(u => u.User);
         }
 
 

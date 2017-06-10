@@ -288,9 +288,9 @@
     <Compile Include="Migrations\201706040304228_Initial.Designer.cs">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706070925118_Depl.cs" />
-    <Compile Include="Migrations\201706070925118_Depl.Designer.cs">
-      <DependentUpon>201706070925118_Depl.cs</DependentUpon>
+    <Compile Include="Migrations\201706100950105_DeployDatabase.cs" />
+    <Compile Include="Migrations\201706100950105_DeployDatabase.Designer.cs">
+      <DependentUpon>201706100950105_DeployDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -387,8 +387,8 @@
     <EmbeddedResource Include="Migrations\201706040304228_Initial.resx">
       <DependentUpon>201706040304228_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706070925118_Depl.resx">
-      <DependentUpon>201706070925118_Depl.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706100950105_DeployDatabase.resx">
+      <DependentUpon>201706100950105_DeployDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

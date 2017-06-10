@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,13 +18,12 @@ namespace BookingApp.Models
         public double Longitude { get; set; }
         public string ImageURL { get; set; }
         public bool Approved { get; set; }
+        [JsonIgnore]
         public List<Room> Rooms { get; set; }
+        [JsonIgnore]
         public List<Comment> Comments { get; set; }
-        [Required]
         public AccommodationType AccomodationType { get; set; }
-        [Required]
         public Place Place { get; set; }
-        [Required]
         public BAIdentityUser Owner { get; set; }
         public Accommodation() { }
     }
