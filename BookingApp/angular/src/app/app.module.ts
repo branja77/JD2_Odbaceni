@@ -10,12 +10,13 @@ import { AccommodationListComponent } from './accommodation-list/accommodation-l
 import { AccommodationComponent } from './accommodation/accommodation.component';
 import { RoomComponent } from './room/room.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
+import {AccommodationShowComponent} from './accommodation-show/accommodation-show.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
   {path: "accommodation-list/:name", component: AccommodationListComponent},
   {path: "accommodation-list", component: AccommodationListComponent},
-  {path: "accommodation", component: AccommodationComponent},
+  {path: "accommodation-show/:id", component: AccommodationShowComponent},
   {path: "room/:Id", component: RoomComponent},
   {path: "", redirectTo:"home", pathMatch: "full"}
 ]
@@ -27,6 +28,7 @@ const Routes = [
     AccommodationListComponent, 
     RoomComponent,
     AccommodationComponent,
+    AccommodationShowComponent,
     CommentListComponent
   ],
   imports: [

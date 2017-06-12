@@ -1,4 +1,8 @@
 import { Component, Input, HostBinding } from '@angular/core';
+import {
+  Router,
+  ActivatedRoute
+} from '@angular/router';
 
 import { Accommodation } from '../model/accommodation.model';
 
@@ -7,5 +11,15 @@ import { Accommodation } from '../model/accommodation.model';
   templateUrl: './accommodation.component.html',
 })
 export class AccommodationComponent {
+  constructor(private router: Router)
+  {
+
+  }
   @Input() accommodation: Accommodation;
+
+  gotoDetail(accommodation: Accommodation): void {
+    alert(accommodation.name);
+    const link = ['/accommodation-show', accommodation.id];
+    this.router.navigate(link);
+  }
 }
