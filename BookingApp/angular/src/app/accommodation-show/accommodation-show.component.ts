@@ -11,9 +11,11 @@ import { Accommodation } from '../model/accommodation.model';
 export class AccommodationShowComponent implements OnInit {
   @Output() close = new EventEmitter();
   public id: number;
+  public showComm: boolean;
   accommodation: Accommodation;
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
       activatedRoute.params.subscribe(params => {this.id = params["id"]});
+      this.showComm = false;
       this.accommodation ={id: 1,
           name: 'pepski1',
           description: 'pepica deskripsn',
@@ -36,5 +38,16 @@ export class AccommodationShowComponent implements OnInit {
 
   goBack(): void {
      window.history.back();
+  }
+  showComments():void{
+    if(this.showComm == false)
+    {
+      this.showComm = true;
+    }
+    else
+    {
+      this.showComm = false;
+    }
+    
   }
 }

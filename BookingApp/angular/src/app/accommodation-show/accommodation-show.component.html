@@ -24,6 +24,10 @@
     <label>Owner: </label>{{accommodation.owner.username}}
    </div>
    <div>
+     <button (click)="showComments()">Show comments</button>
+   </div>
+   <div id="comms" *ngIf="showComm">Komentari</div>
+   <div>
     <button (click)="goBack()">Back</button>
     <button (click)="save()">Save</button>
   </div>
