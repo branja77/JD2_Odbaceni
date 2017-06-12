@@ -7,10 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AccommodationComponent } from './accommodation/accommodation.component';
+import { RoomComponent } from './room/room.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
   {path: "accommodation", component: AccommodationComponent},
+  {path: "room/:Id", component: RoomComponent}
   //{path: "", redirectTo:"home"}
 ]
 
@@ -18,7 +20,8 @@ const Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    AccommodationComponent
+    AccommodationComponent, 
+    RoomComponent
   ],
   imports: [
     BrowserModule,
