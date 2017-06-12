@@ -12,6 +12,8 @@ import { RoomComponent } from './room/room.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentComponent } from './comment/comment.component';
 import {AccommodationShowComponent} from './accommodation-show/accommodation-show.component';
+import { LoginHeaderComponent } from './login-header/login-header.component';
+import { AuthService } from './services/auth.service';
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -31,7 +33,8 @@ const Routes = [
     AccommodationComponent,
     AccommodationShowComponent,
     CommentListComponent,
-    CommentComponent
+    CommentComponent,
+    LoginHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ const Routes = [
     HttpModule,
     RouterModule.forRoot(Routes)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
