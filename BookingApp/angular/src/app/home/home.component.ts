@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Place } from '../model/place.model';
 import {NgForm} from '@angular/forms';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import {NgForm} from '@angular/forms';
 })
 export class HomeComponent {
     places: Place[]; 
-    constructor(){
+    constructor(private router: Router){
       this.places = [{id: 1, name: "Bijeljina", region: null}, 
       {id: 2, name: "Novi Sad", region: null},
       {id: 3, name: "Sekovici", region: null},
@@ -18,6 +19,6 @@ export class HomeComponent {
     }
 
     onSubmit(place: Place, form: NgForm) {
-      alert(place.name);
+      this.router.navigate(['/accommodation-list/' + place.name]);
     }
 }
