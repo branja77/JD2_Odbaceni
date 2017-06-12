@@ -14,8 +14,9 @@ import { CommentListComponent } from './comment-list/comment-list.component';
 const Routes = [
   {path: "home", component: HomeComponent},
   {path: "accommodation-list", component: AccommodationListComponent},
-  {path: "room/:Id", component: RoomComponent}
-  //{path: "", redirectTo:"home"}
+  {path: "accommodation", component: AccommodationComponent},
+  {path: "room/:Id", component: RoomComponent},
+  {path: "", redirectTo:"home", pathMatch: "full"}
 ]
 
 @NgModule({
