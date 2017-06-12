@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Place } from '../model/place.model';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,13 @@ export class HomeComponent {
     constructor(){
       this.places = [{id: 1, name: "Bijeljina", region: null}, 
       {id: 2, name: "Novi Sad", region: null},
-      {id: 3, name: "Sekovici", region: null}
+      {id: 3, name: "Sekovici", region: null},
+      {id: 4, name: "Banja Luka", region: null},
+      {id: 5, name: "Brcko", region: null}
       ];
     }
 
-     public searchPlace(event) {
-    alert('Search ');
-  }
+    onSubmit(place: Place, form: NgForm) {
+      alert(place.name);
+    }
 }
