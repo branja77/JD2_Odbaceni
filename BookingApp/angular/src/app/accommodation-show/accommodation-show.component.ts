@@ -9,14 +9,13 @@ import { Accommodation } from '../model/accommodation.model';
   templateUrl: './accommodation-show.component.html',
 })
 export class AccommodationShowComponent implements OnInit {
-  @Output() close = new EventEmitter();
   public id: number;
   public showComm: boolean;
   accommodation: Accommodation;
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
       activatedRoute.params.subscribe(params => {this.id = params["id"]});
       this.showComm = false;
-      this.accommodation ={id: 1,
+      this.accommodation ={ id: 1,
           name: 'pepski1',
           description: 'pepica deskripsn',
           address: 'pepska',
@@ -27,7 +26,8 @@ export class AccommodationShowComponent implements OnInit {
           approved: true,
           accommodationType: {id: 1, name:"smjestaj"},
           place : {id: 3, name: "Sekovici", region: null},
-          owner: {id: "branja", email: "branja@gmail.com", password: "branja", username: "branja"}};
+          owner: {id: "branja", email: "branja@gmail.com", password: "branja", username: "branja"}
+        };
   }
 
   ngOnInit(): void {

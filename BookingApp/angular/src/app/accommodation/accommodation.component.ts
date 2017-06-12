@@ -18,7 +18,6 @@ export class AccommodationComponent {
   @Input() accommodation: Accommodation;
 
   gotoDetail(accommodation: Accommodation): void {
-    alert(accommodation.name);
     const link = ['/accommodation-show', accommodation.id];
     this.router.navigate(link);
   }

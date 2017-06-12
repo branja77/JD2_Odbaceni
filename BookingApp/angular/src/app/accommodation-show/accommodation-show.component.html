@@ -26,7 +26,9 @@
    <div>
      <button (click)="showComments()">Show comments</button>
    </div>
-   <div id="comms" *ngIf="showComm">Komentari</div>
+   <div id="comms" *ngIf="showComm">
+     <app-comment-list [accommodation]="accommodation"></app-comment-list>
+   </div>
    <div>
     <button (click)="goBack()">Back</button>
     <button (click)="save()">Save</button>

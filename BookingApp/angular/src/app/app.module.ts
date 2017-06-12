@@ -10,6 +10,7 @@ import { AccommodationListComponent } from './accommodation-list/accommodation-l
 import { AccommodationComponent } from './accommodation/accommodation.component';
 import { RoomComponent } from './room/room.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
+import { CommentComponent } from './comment/comment.component';
 import {AccommodationShowComponent} from './accommodation-show/accommodation-show.component';
 
 const Routes = [
@@ -29,7 +30,8 @@ const Routes = [
     RoomComponent,
     AccommodationComponent,
     AccommodationShowComponent,
-    CommentListComponent
+    CommentListComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
