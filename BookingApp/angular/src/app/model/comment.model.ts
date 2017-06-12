@@ -1,4 +1,5 @@
-import { Accommodation } from './accommodation.model'
+import { Accommodation } from './accommodation.model';
+import { BAIdentityUser } from './baidentity-user.model';
 
 export class Comment {
   constructor(

@@ -1,4 +1,6 @@
 import { AccommodationType } from './accommodation-type.model';
+import { BAIdentityUser } from './baidentity-user.model';
+import { Place } from './place.model';
 
 export class Accommodation {
   constructor(
