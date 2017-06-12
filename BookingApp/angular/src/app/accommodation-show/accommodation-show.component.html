@@ -1,0 +1,29 @@
+  <h2>{{accommodation.name}} details!</h2>
+  <div>
+    <label>ID: </label>{{accommodation.id}}
+  </div>
+   <div>
+    <label>Name: </label>{{accommodation.name}}
+   </div>
+   <div>
+    <label>Description: </label>{{accommodation.description}}
+   </div>
+   <div>
+    <label>Address: </label>{{accommodation.address}}
+   </div>
+   <div>
+    <label>Accommodation Type: </label>{{accommodation.accommodationType.name}}
+   </div>
+   <div>
+    <label>Place: </label>{{accommodation.place.name}}
+   </div>
+   <div>
+    <label>Region: </label>{{accommodation.place.region}}
+   </div>
+   <div>
+    <label>Owner: </label>{{accommodation.owner.username}}
+   </div>
+   <div>
+    <button (click)="goBack()">Back</button>
+    <button (click)="save()">Save</button>
+  </div>
