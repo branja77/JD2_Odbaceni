@@ -13,4 +13,8 @@ export class HomeComponent {
       {id: 3, name: "Sekovici", region: null}
       ];
     }
+
+     public searchPlace(event) {
+    alert('Search ');
+  }
 }
