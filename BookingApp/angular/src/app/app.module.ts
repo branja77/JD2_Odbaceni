@@ -11,6 +11,7 @@ import { AccommodationComponent } from './accommodation/accommodation.component'
 import { RoomComponent } from './room/room.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentComponent } from './comment/comment.component';
+import { RoomListComponent } from './room-list/room-list.component';
 import {AccommodationShowComponent} from './accommodation-show/accommodation-show.component';
 import { LoginHeaderComponent } from './login-header/login-header.component';
 import { AuthService } from './services/auth.service';
@@ -34,7 +35,8 @@ const Routes = [
     AccommodationShowComponent,
     CommentListComponent,
     CommentComponent,
-    LoginHeaderComponent
+    LoginHeaderComponent, 
+    RoomListComponent
   ],
   imports: [
     BrowserModule,
