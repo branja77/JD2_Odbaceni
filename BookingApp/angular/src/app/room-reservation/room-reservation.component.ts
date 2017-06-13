@@ -22,4 +22,9 @@ export class RoomReservationComponent {
                 pricePerNight: 10000,
                 accommodation: null};
    }
+
+   reserveRoom(){
+     const link = ['/my-reservations'];
+    this.router.navigate(link);
+   }
 }
