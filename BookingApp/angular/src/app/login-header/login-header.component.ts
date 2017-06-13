@@ -3,6 +3,7 @@ import {
   Router,
   ActivatedRoute
 } from '@angular/router';
+import {NgForm} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
 import { BAIdentityUser} from '../model/baidentity-user.model';
@@ -18,8 +19,8 @@ export class LoginHeaderComponent {
       this.user = {id: "branja", email: "branja@gmail.com", password: "branja", username: "branja"};
   }
   
-  logIn(){
-    this.authService.logIn();
+  onSubmit(user: BAIdentityUser, ngFform: NgForm){
+    this.authService.logIn(user);
   }
 
   logOut(){

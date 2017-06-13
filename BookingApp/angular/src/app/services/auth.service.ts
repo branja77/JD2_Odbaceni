@@ -1,12 +1,34 @@
+import { BAIdentityUser} from '../model/baidentity-user.model';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Injectable } from "@angular/core";
+import { Observable } from 'rxjs/Observable';
+
+
+@Injectable()
 export class AuthService{
     loggedIn : boolean;
-
-    constructor(){
+    responses: Observable<Response>;
+    constructor(private http: Http){
         
     }
 
-    logIn(): void{
-        localStorage.setItem("token","myToken");
+    logIn(user: BAIdentityUser): void{
+        
+        const headers: Headers = new Headers();
+        headers.append('Content-type', 'application/x-www-form-urlencoded');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        const params: string = `username=${user.username}&password=${user.password}&grant_type=password`;
+        debugger
+
+        this.http.post('http://localhost:54042/oauth/token', params, opts).subscribe(
+                (data) => {
+
+                localStorage.setItem("token","nestoo");
+            },
+            err => console.log("Greska brt"));
+        
     }
 
     logOut(): void{
