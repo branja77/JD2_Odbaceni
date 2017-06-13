@@ -33,9 +33,6 @@ export class AccommodationShowComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  save(): void {
-  }
-
   goBack(): void {
      window.history.back();
   }
