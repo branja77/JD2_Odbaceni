@@ -1,9 +1,11 @@
 <div *ngIf="!isLoggedIn()" class="w3-bar w3-white w3-large">
+  <a [routerLink]="['/new-accommodation']" class="w3-bar-item w3-button w3-red w3-mobile">New Accommodation</a>
   <button class="w3-bar-item w3-right w3-button w3-light-grey w3-mobile" (click)="logIn()">Log In</button>
   <input type="text" placeholder="Password" class="w3-bar-item w3-right w3-light-grey w3-mobile" />
   <input type="text" placeholder="Username" class="w3-bar-item w3-right w3-light-grey w3-mobile"/>
 </div>
 <div *ngIf="isLoggedIn()" class="w3-bar w3-white w3-large">
+  <a [routerLink]="['/new-accommodation']" class="w3-bar-item w3-button w3-red w3-mobile">New Accommodation</a>
   <button class="w3-bar-item  w3-button w3-right w3-light-grey w3-mobile" (click)="logOut()">Log Out</button>
   <span class="w3-bar-item w3-right w3-light-grey w3-mobile">{{user.username}}</span>
 </div>

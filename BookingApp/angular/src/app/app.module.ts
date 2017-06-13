@@ -16,6 +16,7 @@ import {AccommodationShowComponent} from './accommodation-show/accommodation-sho
 import { LoginHeaderComponent } from './login-header/login-header.component';
 import { AuthService } from './services/auth.service';
 import {RoomReservationComponent} from './room-reservation/room-reservation.component';
+import { NewAccommodationComponent } from './new-accommodation/new-accommodation.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -24,7 +25,8 @@ const Routes = [
   {path: "accommodation-show/:id", component: AccommodationShowComponent},
   {path: "room/:Id", component: RoomComponent},
   {path: "room-reservation/:id", component: RoomReservationComponent},
-  {path: "", redirectTo:"home", pathMatch: "full"}
+  {path: "", redirectTo:"home", pathMatch: "full"},
+  {path: "new-accommodation", component: NewAccommodationComponent}
 ]
 
 @NgModule({
@@ -39,7 +41,7 @@ const Routes = [
     CommentComponent,
     LoginHeaderComponent, 
     RoomReservationComponent,
-    RoomListComponent
+    RoomListComponent, NewAccommodationComponent
   ],
   imports: [
     BrowserModule,
