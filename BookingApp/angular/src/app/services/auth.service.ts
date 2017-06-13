@@ -20,14 +20,20 @@ export class AuthService{
         const opts: RequestOptions = new RequestOptions();
         opts.headers = headers;
         const params: string = `username=${user.username}&password=${user.password}&grant_type=password`;
-        debugger
 
         this.http.post('http://localhost:54042/oauth/token', params, opts).subscribe(
-                (data) => {
-
-                localStorage.setItem("token","nestoo");
+            (data) => {
+                if(data.status == 200){
+                    let obj = data.json();
+                    const token = obj['token_type'] + ' ' + obj['access_token'];
+                    localStorage.setItem("token",token);
+                }else{
+                    alert("Oops, something went wrong. Try again.");
+                }
             },
-            err => console.log("Greska brt"));
+            err => {
+                alert("Wrong username and password");
+            });
         
     }
 
