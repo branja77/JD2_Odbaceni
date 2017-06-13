@@ -15,6 +15,7 @@ import { RoomListComponent } from './room-list/room-list.component';
 import {AccommodationShowComponent} from './accommodation-show/accommodation-show.component';
 import { LoginHeaderComponent } from './login-header/login-header.component';
 import { AuthService } from './services/auth.service';
+import {RoomReservationComponent} from './room-reservation/room-reservation.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -22,6 +23,7 @@ const Routes = [
   {path: "accommodation-list", component: AccommodationListComponent},
   {path: "accommodation-show/:id", component: AccommodationShowComponent},
   {path: "room/:Id", component: RoomComponent},
+  {path: "room-reservation/:id", component: RoomReservationComponent},
   {path: "", redirectTo:"home", pathMatch: "full"}
 ]
 
@@ -36,6 +38,7 @@ const Routes = [
     CommentListComponent,
     CommentComponent,
     LoginHeaderComponent, 
+    RoomReservationComponent,
     RoomListComponent
   ],
   imports: [

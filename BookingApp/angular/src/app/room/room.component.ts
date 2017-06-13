@@ -1,4 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,  } from '@angular/core';
+import {
+  Router,
+  ActivatedRoute
+} from '@angular/router';
 
 import { Room } from '../model/room.model';
 
@@ -7,13 +11,14 @@ import { Room } from '../model/room.model';
   templateUrl: './room.component.html',
 })
 export class RoomComponent {
-  constructor()
+constructor(private router: Router)
   {
 
   }
   @Input() room: Room;
 
   bookNow(room: Room): void {
-      alert(room.pricePerNight)
+      const link = ['/room-reservation', room.id];
+    this.router.navigate(link);
   }
 }
