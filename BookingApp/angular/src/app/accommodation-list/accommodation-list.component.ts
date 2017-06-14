@@ -16,7 +16,7 @@ export class AccommodationListComponent implements OnInit {
   accommodations: Accommodation[]; 
   error: any;
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private accommodationsService: HttpAccommodationsService) {
-      activatedRoute.params.subscribe(params => {this.name = params["Name"]});
+      activatedRoute.params.subscribe(params => {this.name = params["name"]});
    }
 
   ngOnInit(): void {

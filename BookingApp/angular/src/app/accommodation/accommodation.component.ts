@@ -11,14 +11,14 @@ import { Accommodation } from '../model/accommodation.model';
   templateUrl: './accommodation.component.html',
 })
 export class AccommodationComponent {
-  constructor(private router: Router)
+  constructor(private router: Router, private activatedRoute: ActivatedRoute)
   {
 
   }
   @Input() accommodation: Accommodation;
 
-  gotoDetail(accommodation: Accommodation): void {
-    const link = ['/accommodation-show', accommodation.id];
+  gotoDetail(accId: string): void {
+    const link = ['/accommodation-show', accId];
     this.router.navigate(link);
   }
 }

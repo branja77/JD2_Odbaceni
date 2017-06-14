@@ -1,27 +1,24 @@
-  <h2>{{accommodation.name}} details!</h2>
+  <h2>{{accommodation.Name}} details!</h2>
   <div>
-    <label>ID: </label>{{accommodation.id}}
+    <label>ID: </label>{{accommodation.Id}}
   </div>
    <div>
-    <label>Name: </label>{{accommodation.name}}
+    <label>Name: </label>{{accommodation.Name}}
    </div>
    <div>
-    <label>Description: </label>{{accommodation.description}}
+    <label>Description: </label>{{accommodation.Description}}
    </div>
    <div>
-    <label>Address: </label>{{accommodation.address}}
+    <label>Address: </label>{{accommodation.Address}}
    </div>
    <div>
-    <label>Accommodation Type: </label>{{accommodation.accommodationType.name}}
+    <label>Accommodation Type: </label>{{accommodation.AccomodationType.Name}}
    </div>
    <div>
-    <label>Place: </label>{{accommodation.place.name}}
+    <label>Place: </label>{{accommodation.Place.Name}}
    </div>
    <div>
-    <label>Region: </label>{{accommodation.place.region}}
-   </div>
-   <div>
-    <label>Owner: </label>{{accommodation.owner.username}}
+    <label>Owner: </label>{{accommodation.Owner.Email}}
    </div>
    <div>
      <button (click)="showComments()">Show comments</button>
@@ -30,6 +27,6 @@
      <app-comment-list [accommodation]="accommodation"></app-comment-list>
    </div>
    <div>
-     <app-room-list></app-room-list>
+     <app-room-list [accommodation]="accommodation"></app-room-list>
     <button (click)="goBack()">Back</button>
   </div>

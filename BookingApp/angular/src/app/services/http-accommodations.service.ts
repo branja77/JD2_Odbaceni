@@ -18,7 +18,13 @@ export class HttpAccommodationsService{
     return this.http.get(this.webApiURL).toPromise()
     .then(response => response.json() as Accommodation[] )
     .catch(this.handleError);
-  }
+}
+
+    getAccommodation(id: number):Promise<Accommodation> {  
+        return this.http.get(this.webApiURL + '/' + id).toPromise()
+    .then(response => response.json() as Accommodation)
+    .catch(this.handleError);
+    }
 
     postAccommodation(accommodation: Accommodation): Observable<any>  {
         const headers: Headers = new Headers();
