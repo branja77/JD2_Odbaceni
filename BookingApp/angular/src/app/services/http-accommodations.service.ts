@@ -26,23 +26,21 @@ export class HttpAccommodationsService{
         .catch(this.handleError);
     }
 
-    postAccommodation(accommodation: Accommodation): Observable<any>  {
+    postAccommodation(accommodation: Accommodation): Promise<any>  {
         const headers: Headers = new Headers();
         if(localStorage.getItem("token") !== null)
         {
-            headers.append("token", localStorage.getItem("token"));
+            headers.append("Authorization", localStorage.getItem("token"));
         }
         headers.append('Accept', 'application/json');
         headers.append('Content-type', 'application/json');
 
         const opts: RequestOptions = new RequestOptions();
         opts.headers = headers;
-
-        return this.http.post(
-        'http://localhost:54042/api/accommodation',
-        JSON.stringify({
-            accommodation
-        }), opts);
+        
+        return this.http.post(this.webApiURL, accommodation, opts).toPromise().
+            then(response => {response.json(); console.log(response.json())})
+            .catch(this.handleError);
     }
 
       private handleError(error: any): Promise<any> {
