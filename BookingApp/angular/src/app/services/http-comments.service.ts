@@ -21,7 +21,7 @@ export class HttpCommentsService{
         const opts: RequestOptions = new RequestOptions();
         opts.headers = headers;
 
-    return this.http.get(this.webApiURL).toPromise()
+    return this.http.get(this.webApiURL, opts).toPromise()
     .then(response => response.json() as Comment[] )
     .catch(this.handleError);
   }

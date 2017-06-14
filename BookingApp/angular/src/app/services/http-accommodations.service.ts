@@ -15,15 +15,15 @@ export class HttpAccommodationsService{
     }
 
     getAccommodations():Promise<Array<Accommodation>> {  
-    return this.http.get(this.webApiURL).toPromise()
-    .then(response => response.json() as Accommodation[] )
-    .catch(this.handleError);
-}
+        return this.http.get(this.webApiURL).toPromise()
+        .then(response => response.json() as Accommodation[] )
+        .catch(this.handleError);
+    }
 
     getAccommodation(id: number):Promise<Accommodation> {  
         return this.http.get(this.webApiURL + '/' + id).toPromise()
-    .then(response => response.json() as Accommodation)
-    .catch(this.handleError);
+        .then(response => response.json() as Accommodation)
+        .catch(this.handleError);
     }
 
     postAccommodation(accommodation: Accommodation): Observable<any>  {

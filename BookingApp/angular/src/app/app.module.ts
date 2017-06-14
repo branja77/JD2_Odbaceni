@@ -18,6 +18,7 @@ import { AuthService } from './services/auth.service';
 import { HttpAccommodationsService} from './services/http-accommodations.service';
 import { HttpPlacesService} from './services/http-places.service';
 import { HttpCommentsService} from './services/http-comments.service';
+import { HttpRoomsService} from './services/http-rooms.service';
 import { RoomReservationComponent} from './room-reservation/room-reservation.component';
 import { NewAccommodationComponent } from './new-accommodation/new-accommodation.component';
 import { MyReservationsComponent } from './my-reservations/my-reservations.component';
@@ -62,7 +63,8 @@ const Routes = [
     AuthService, 
     HttpAccommodationsService, 
     HttpPlacesService,
-    HttpCommentsService
+    HttpCommentsService,
+    HttpRoomsService
   ],
   bootstrap: [AppComponent]
 })

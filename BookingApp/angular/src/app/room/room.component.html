@@ -1,9 +1,9 @@
 <div class="w3-third w3-margin-bottom">
       <div class="w3-container w3-white">
-        <h3>{{room.roomNumber}}</h3>
-        <h6>Bed Count: {{room.bedCount}}</h6>
-        <p>Price: {{room.pricePerNight}}</p>
-        <p>Description: {{room.description}}</p>
+        <h3>{{room.RoomNumber}}</h3>
+        <h6>Bed Count: {{room.BedCount}}</h6>
+        <p>Price: {{room.PricePerNight}}</p>
+        <p>Description: {{room.Description}}</p>
         <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-        <button class="w3-button w3-block w3-black w3-margin-bottom" (click)="bookNow(room)">Book Now</button>
+        <button class="w3-button w3-block w3-black w3-margin-bottom" (click)="bookNow(room.Id)">Book Now</button>
     </div>

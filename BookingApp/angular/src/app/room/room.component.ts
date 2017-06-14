@@ -17,8 +17,8 @@ constructor(private router: Router)
   }
   @Input() room: Room;
 
-  bookNow(room: Room): void {
-      const link = ['/room-reservation', room.id];
+  bookNow(id: number): void {
+      const link = ['/room-reservation', id];
     this.router.navigate(link);
   }
 }
