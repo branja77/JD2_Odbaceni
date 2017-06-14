@@ -3,3 +3,6 @@
       <app-accommodation *ngIf="accommodation.place.name == name || name==null" [accommodation]="accommodation"></app-accommodation>
   </div>
 </div>
+<div style="padding: 50px"> 
+  <a [routerLink]="['/new-accommodation']" class="w3-bar-item w3-button w3-red w3-mobile" >New Accommodation</a>
+</div>

@@ -1,6 +1,6 @@
 <div *ngIf="!isLoggedIn()" class="w3-bar w3-white w3-large">
   <a [routerLink]="['/home']" class="w3-bar-item w3-button w3-red w3-mobile">Home</a>
-  <a [routerLink]="['/new-accommodation']" class="w3-bar-item w3-button w3-red w3-mobile">New Accommodation</a>
+  <a [routerLink]="['/accommodation-list']" class="w3-bar-item w3-button w3-red w3-mobile">Accommodations</a>
 <form  #f="ngForm" (ngSubmit)="onSubmit(f.value, f)">
   <button type="submit" class="w3-bar-item w3-right w3-button w3-light-grey w3-mobile">Log In</button>
   <input name="password" type="text" placeholder="Password" class="w3-bar-item w3-right w3-light-grey w3-mobile" ngModel/>
@@ -9,7 +9,7 @@
 </div>
 <div *ngIf="isLoggedIn()" class="w3-bar w3-white w3-large">
   <a [routerLink]="['/home']" class="w3-bar-item w3-button w3-red w3-mobile">Home</a>
-  <a [routerLink]="['/new-accommodation']" class="w3-bar-item w3-button w3-red w3-mobile">New Accommodation</a>
+  <a [routerLink]="['/accommodation-list']" class="w3-bar-item w3-button w3-red w3-mobile">Accommodations</a>
   <button class="w3-bar-item  w3-button w3-right w3-light-grey w3-mobile" (click)="logOut()">Log Out</button>
   <span class="w3-bar-item w3-right w3-light-grey w3-mobile">{{user.username}}</span>
 </div>
