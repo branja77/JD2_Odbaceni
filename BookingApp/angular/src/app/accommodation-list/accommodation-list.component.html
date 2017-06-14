@@ -1,6 +1,6 @@
 <div class="w3-content" style="max-width:1532px;">
-  <div class="w3-row-padding w3-padding-16" *ngFor="let accommodation of accommodations | async">
-      <app-accommodation *ngIf="accommodation.place.name == name || name==null" [accommodation]="accommodation"></app-accommodation>
+  <div class="w3-row-padding w3-padding-16" *ngFor="let accommodation of accommodations">
+      <app-accommodation *ngIf="accommodation.Place.Name == Name || Name==null" [accommodation]="accommodation"></app-accommodation>
   </div>
 </div>
 <div style="padding: 50px"> 

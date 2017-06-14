@@ -13,13 +13,18 @@ import { HttpAccommodationsService} from '../services/http-accommodations.servic
 })
 export class AccommodationListComponent implements OnInit {
   public name: string;
-  public accommodations: Accommodation[]; 
+  accommodations: Accommodation[]; 
+  error: any;
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private accommodationsService: HttpAccommodationsService) {
-      activatedRoute.params.subscribe(params => {this.name = params["name"]});
+      activatedRoute.params.subscribe(params => {this.name = params["Name"]});
    }
 
   ngOnInit(): void {
-    this.accommodationsService.getAccommodations();
+    debugger
+    console.log(this.accommodationsService.getAccommodations());
+    this.accommodationsService.getAccommodations().then(accommodations => {this.accommodations = accommodations; debugger})
+      .catch(error => this.error = error);
+      console.log(this.accommodations);
     
   }
    
