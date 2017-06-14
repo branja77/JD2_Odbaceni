@@ -1,4 +1,5 @@
-  <h2>{{accommodation.Name}} details!</h2>
+<div *ngIf="accommodation">
+ <h2>{{accommodation.Name}} details!</h2>
   <div>
     <label>ID: </label>{{accommodation.Id}}
   </div>
@@ -30,3 +31,4 @@
      <app-room-list [accommodation]="accommodation"></app-room-list>
     <button (click)="goBack()">Back</button>
   </div>
+</div>

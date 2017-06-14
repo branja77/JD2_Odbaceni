@@ -18,8 +18,7 @@ export class AccommodationComponent {
   @Input() accommodation: Accommodation;
 
   gotoDetail(accId: string): void {
-    const link = ['/accommodation-show', accId];
-    debugger;
+    const link = ['../accommodation-show', accId];
     this.router.navigate(link);
   }
 }

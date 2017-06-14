@@ -12,13 +12,16 @@ import { HttpAccommodationsService } from '../services/http-accommodations.servi
 export class AccommodationShowComponent implements OnInit {
   public id: number;
   public showComm: boolean;
-  accommodation: Accommodation;
+  public accommodation: Accommodation = null;
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private accService: HttpAccommodationsService) {
       activatedRoute.params.subscribe(params => {this.id = params["id"]});
   }
 
   ngOnInit(): void {
-     this.accService.getAccommodation(this.id).then(accommodation => {this.accommodation = accommodation;});
+     this.accService.getAccommodation(this.id).then(data => { 
+       this.accommodation = data;
+      });
+  
   }
 
   goBack(): void {
