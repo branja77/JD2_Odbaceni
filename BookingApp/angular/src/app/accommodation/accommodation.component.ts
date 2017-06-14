@@ -19,6 +19,7 @@ export class AccommodationComponent {
 
   gotoDetail(accId: string): void {
     const link = ['/accommodation-show', accId];
+    debugger;
     this.router.navigate(link);
   }
 }

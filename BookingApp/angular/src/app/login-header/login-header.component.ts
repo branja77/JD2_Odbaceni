@@ -16,11 +16,11 @@ export class LoginHeaderComponent {
   public user: BAIdentityUser;
   constructor(private authService: AuthService)
   {
-      this.user = {id: "branja", email: "branja@gmail.com", password: "branja", username: "branja"};
   }
   
   onSubmit(user: BAIdentityUser, ngFform: NgForm){
     this.authService.logIn(user);
+    this.user = user;
   }
 
   logOut(){
