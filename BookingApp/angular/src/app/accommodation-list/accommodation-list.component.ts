@@ -20,12 +20,6 @@ export class AccommodationListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    debugger
-    console.log(this.accommodationsService.getAccommodations());
-    this.accommodationsService.getAccommodations().then(accommodations => {this.accommodations = accommodations; debugger})
-      .catch(error => this.error = error);
-      console.log(this.accommodations);
-    
+    this.accommodationsService.getAccommodations().then(accommodations => {this.accommodations = accommodations;});
   }
-   
 }

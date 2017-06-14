@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Place } from '../model/place.model';
 import {NgForm} from '@angular/forms';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
+import{ HttpPlacesService} from '../services/http-places.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
     places: Place[]; 
-    constructor(private router: Router){
-      this.places = [{id: 1, name: "Bijeljina", region: null}, 
-      {id: 2, name: "Novi Sad", region: null},
-      {id: 3, name: "Sekovici", region: null},
-      {id: 4, name: "Banja Luka", region: null},
-      {id: 5, name: "Brcko", region: null}
-      ];
+    error: any;
+    constructor(private router: Router, private placesService: HttpPlacesService){
+    }
+
+    ngOnInit(){
+          console.log(this.placesService.getPlaces());
+    this.placesService.getPlaces().then(places => {this.places = places})
+      .catch(error => this.error = error);
+      console.log(this.places);
     }
 
     onSubmit(place: Place, form: NgForm) {

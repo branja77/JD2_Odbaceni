@@ -16,6 +16,7 @@ import { AccommodationShowComponent} from './accommodation-show/accommodation-sh
 import { LoginHeaderComponent } from './login-header/login-header.component';
 import { AuthService } from './services/auth.service';
 import { HttpAccommodationsService} from './services/http-accommodations.service';
+import { HttpPlacesService} from './services/http-places.service';
 import { RoomReservationComponent} from './room-reservation/room-reservation.component';
 import { NewAccommodationComponent } from './new-accommodation/new-accommodation.component';
 import { MyReservationsComponent } from './my-reservations/my-reservations.component';
@@ -56,7 +57,11 @@ const Routes = [
     JsonpModule,
     RouterModule.forRoot(Routes)
   ],
-  providers: [AuthService, HttpAccommodationsService],
+  providers: [
+    AuthService, 
+    HttpAccommodationsService, 
+    HttpPlacesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
