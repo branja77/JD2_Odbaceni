@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   Router,
   ActivatedRoute
@@ -6,17 +6,21 @@ import {
 
 import { Accommodation } from '../model/accommodation.model';
 import { Comment } from '../model/comment.model';
+import { HttpCommentsService} from '../services/http-comments.service';
 
 @Component({
   selector: 'app-comment-list',
   templateUrl: './comment-list.component.html',
 })
-export class CommentListComponent {
+export class CommentListComponent implements OnInit {
 
     @Input() accommodation: Accommodation;
     comments: Comment[];
-    constructor()
+    constructor(private commentsService: HttpCommentsService)
     {
-      this.comments = [];
+    }
+
+    ngOnInit(){
+           this.commentsService.getComments().then(data => { this.comments = data;});
     }
 }

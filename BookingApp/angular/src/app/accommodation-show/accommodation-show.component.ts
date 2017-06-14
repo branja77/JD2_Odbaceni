@@ -11,7 +11,7 @@ import { HttpAccommodationsService } from '../services/http-accommodations.servi
 })
 export class AccommodationShowComponent implements OnInit {
   public id: number;
-  public showComm: boolean;
+  public showComm: boolean = false;
   public accommodation: Accommodation = null;
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private accService: HttpAccommodationsService) {
       activatedRoute.params.subscribe(params => {this.id = params["id"]});
