@@ -23,6 +23,7 @@ import { HttpAccommodationTypesService} from './services/http-accommodationTypes
 import { HttpCommentsService} from './services/http-comments.service';
 import { HttpRoomsService} from './services/http-rooms.service';
 import { HttpCountriesService} from './services/http-countries.service';
+import { HttpRoomReservationsService} from './services/http-roomReservations.service';
 import { RoomReservationComponent} from './room-reservation/room-reservation.component';
 import { NewAccommodationComponent } from './new-accommodation/new-accommodation.component';
 import { NewRoomComponent } from './new-room/new-room.component';
@@ -76,7 +77,8 @@ const Routes = [
     HttpCommentsService,
     HttpRoomsService,
     HttpAccommodationTypesService, 
-    HttpCountriesService
+    HttpCountriesService,
+    HttpRoomReservationsService
   ],
   bootstrap: [AppComponent]
 })
