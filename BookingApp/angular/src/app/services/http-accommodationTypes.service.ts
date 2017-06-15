@@ -4,29 +4,29 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import 'rxjs/add/operator/toPromise';
-import{Accommodation} from '../model/accommodation.model';
+import{AccommodationType} from '../model/accommodation-type.model';
 
 @Injectable()
-export class HttpAccommodationsService{
-    private webApiURL = 'http://localhost:54042/api/accommodation';  // URL to web api
+export class HttpAccommodationTypesService{
+    private webApiURL = 'http://localhost:54042/api/AccommodationTypes';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
     constructor (private http: Http){
 
     }
 
-    getAccommodations():Promise<Array<Accommodation>> {  
+    getAccommodationTypes():Promise<Array<AccommodationType>> {  
         return this.http.get(this.webApiURL).toPromise()
-        .then(response => response.json() as Accommodation[] )
+        .then(response => response.json() as AccommodationType[] )
         .catch(this.handleError);
     }
 
-    getAccommodation(id: number):Promise<Accommodation> {  
+    getAccommodationType(id: number):Promise<AccommodationType> {  
         return this.http.get(this.webApiURL + '/' + id).toPromise()
-        .then(response => response.json() as Accommodation)
+        .then(response => response.json() as AccommodationType)
         .catch(this.handleError);
     }
 
-    postAccommodation(accommodation: Accommodation): Promise<any>  {
+    postAccommodationType(accommodationType: AccommodationType): Promise<any>  {
         const headers: Headers = new Headers();
         debugger
         if(localStorage.getItem("token") !== null)
@@ -39,13 +39,13 @@ export class HttpAccommodationsService{
         const opts: RequestOptions = new RequestOptions();
         opts.headers = headers;
         
-        return this.http.post(this.webApiURL, accommodation, opts).toPromise().
+        return this.http.post(this.webApiURL, accommodationType, opts).toPromise().
             then(response => {response.json(); console.log(response.json())})
             .catch(this.handleError);
     }
 
       private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
+            console.error('An error occurred', error);
+            return Promise.reject(error.message || error);
+      }
 }

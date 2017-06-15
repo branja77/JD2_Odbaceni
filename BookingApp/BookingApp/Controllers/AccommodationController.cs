@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
 
 namespace BookingApp.Controllers
 {
@@ -55,6 +56,9 @@ namespace BookingApp.Controllers
             }
             try
             {
+                accommodation.Owner = db.Users.Find(RequestContext.Principal.Identity.GetUserId());
+                accommodation.Place = db.Places.Find(accommodation.Place.Id);
+                accommodation.AccomodationType = db.AccommodationTypes.Find(accommodation.AccomodationType.Id);
                 db.Accommodations.Add(accommodation);
                 db.SaveChanges();
                 return CreatedAtRoute("DefaultApi", new { id = accommodation.Id }, accommodation);
