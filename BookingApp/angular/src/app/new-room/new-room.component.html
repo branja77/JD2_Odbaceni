@@ -1,0 +1,32 @@
+ <div class="w3-display-left w3-padding w3-col l6 m8">
+    <div class="w3-container w3-red">
+      <h2>Add new room</h2>
+    </div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" >
+      <div class="w3-container w3-white w3-padding-16">
+          <div class="w3-row-padding" style="margin:0 -16px;">
+            <div class="w3-half w3-margin-bottom">
+              <label>Room number</label>
+              <input class="w3-input w3-border" type="number" name="RoomNumber" required ngModel>
+            </div>
+            <div class="w3-half">
+              <label>Bed Count</label>
+              <input class="w3-input w3-border" type="number" name="BedCount" required ngModel>
+            </div>
+            <div class="w3-half">
+              <label>Description</label>
+              <input class="w3-input w3-border" type="text" name="Description" required ngModel>
+            </div>
+            <div class="w3-half">
+              <label>Price Per Night</label>
+              <input class="w3-input w3-border" type="number" name="PricePerNight" required ngModel>
+            </div>
+            <div class="w3-row-padding" style="margin:8px -16px;">         
+            </div>
+          </div>
+          <div class="w3-row-padding" style="margin:8px -16px;">
+          </div>
+          <button class="w3-button w3-dark-grey" type="submit">Create</button>
+      </div>
+    </form>
+  </div>

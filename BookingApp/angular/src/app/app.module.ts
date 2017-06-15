@@ -22,6 +22,7 @@ import { HttpCommentsService} from './services/http-comments.service';
 import { HttpRoomsService} from './services/http-rooms.service';
 import { RoomReservationComponent} from './room-reservation/room-reservation.component';
 import { NewAccommodationComponent } from './new-accommodation/new-accommodation.component';
+import { NewRoomComponent } from './new-room/new-room.component';
 import { MyReservationsComponent } from './my-reservations/my-reservations.component';
 
 
@@ -34,6 +35,7 @@ const Routes = [
   {path: "room-reservation/:id", component: RoomReservationComponent},
   {path: "", redirectTo:"home", pathMatch: "full"},
   {path: "new-accommodation", component: NewAccommodationComponent},
+  {path: "new-room/:id", component: NewRoomComponent},
   {path: "my-reservations", component: MyReservationsComponent}
 ]
 
@@ -50,8 +52,9 @@ const Routes = [
     LoginHeaderComponent, 
     RoomReservationComponent,
     RoomListComponent,
-     NewAccommodationComponent, 
-     MyReservationsComponent
+    NewAccommodationComponent, 
+    MyReservationsComponent,
+    NewRoomComponent
   ],
   imports: [
     BrowserModule,

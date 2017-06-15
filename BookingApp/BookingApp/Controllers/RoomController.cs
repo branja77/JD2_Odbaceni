@@ -39,10 +39,6 @@ namespace BookingApp.Controllers
         [Authorize(Roles ="Manager")]
         public IHttpActionResult PostRoom(Room room)
         {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
 
             if(RoomExists(room.Id))
             {
@@ -50,6 +46,7 @@ namespace BookingApp.Controllers
             }
             try
             {
+                room.Accomodation = db.Accommodations.Find(room.Accomodation.Id);
                 db.Rooms.Add(room);
                 db.SaveChanges();
                 return CreatedAtRoute("DefaultApi", new { id = room.Id }, room);

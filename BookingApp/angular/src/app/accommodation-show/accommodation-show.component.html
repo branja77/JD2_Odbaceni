@@ -29,6 +29,8 @@
    </div>
    <div>
      <app-room-list [accommodation]="accommodation"></app-room-list>
-    <button (click)="goBack()">Back</button>
+  </div>
+  <div style="padding: 50px"> 
+    <a [routerLink]="['/new-room/'] + id" class="w3-bar-item w3-button w3-red w3-mobile" >New Room</a>
   </div>
 </div>

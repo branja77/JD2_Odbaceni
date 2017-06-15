@@ -24,9 +24,6 @@ export class AccommodationShowComponent implements OnInit {
   
   }
 
-  goBack(): void {
-     window.history.back();
-  }
   showComments():void{
     if(this.showComm == false)
     {

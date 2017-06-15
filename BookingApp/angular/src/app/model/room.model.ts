@@ -7,6 +7,6 @@ export class Room{
         public bedCount: number,
         public description: string,
         public pricePerNight: number,
-        public accommodation: Accommodation
+        public accomodation: Accommodation
     ){}
 }

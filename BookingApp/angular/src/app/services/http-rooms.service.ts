@@ -26,15 +26,21 @@ export class HttpRoomsService{
     .catch(this.handleError);
   }
 
-    postPlace(accommodation: Comment): Observable<any>  {
-        /*
-        return this.http.post(
-        'http://localhost:54042/api/accommodation',
-        JSON.stringify({
-            accommodation
-        }), opts);
-        */
-        return null;
+    postRoom(room: Room): Promise<any>  {
+        const headers: Headers = new Headers();
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.post(this.webApiURL, room, opts).toPromise().
+            then(response => {response.json(); console.log(response.json())})
+            .catch(this.handleError);
     }
 
       private handleError(error: any): Promise<any> {
