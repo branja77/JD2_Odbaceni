@@ -26,7 +26,6 @@ export class NewRoomComponent {
 
     onSubmit(room: Room){
       this.room = room;
-      debugger;
       this.room.accomodation = new Accommodation(this.roomId, null, null, null, null, null, null, null, null, null, null, null);
       this.roomsService.postRoom(this.room);
     }
