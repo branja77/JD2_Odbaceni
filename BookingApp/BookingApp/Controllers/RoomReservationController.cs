@@ -35,12 +35,11 @@ namespace BookingApp.Controllers
             return Ok(roomReservation);
         }
 
-        public IQueryable GetRooms()
+        public IQueryable GetRoomReservations()
         {
-            return db.RoomReservations.Include(u => u.Room).Include(u => u.User);
+            string id = RequestContext.Principal.Identity.GetUserId();
+            return db.RoomReservations.Include(u => u.Room).Where(u => u.User.Id == id);
         }
-
-
 
         [ResponseType(typeof(void))]
         [Authorize(Roles = "AppUser")]

@@ -2,10 +2,10 @@
   <div class="w3-row-padding w3-padding-16" *ngFor="let reservation of roomReservations">
       <div class="w3-third w3-margin-bottom">
       <div class="w3-container w3-white">
-        <h3>{{reservation.startDate.toDateString()}}</h3>
-        <h6>{{reservation.endDate.toDateString()}}</h6>
-        <p>{{reservation.timeStamp.toDateString()}}</p>
-        <p>{{reservation.room.id}}</p>
+        <h3>Check in: {{reservation.StartDate}}</h3>
+        <h6>Check out: {{reservation.EndDate}}</h6>
+        <p>Time stamp: {{reservation.TimeStamp}}</p>
+        <p>Room ID: {{reservation.Room.Id}}</p>
         <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
         <button class="w3-button w3-block w3-black w3-margin-bottom" (click)="Delete(reservation)">Delete</button>
     </div>
