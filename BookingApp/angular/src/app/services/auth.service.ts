@@ -27,6 +27,7 @@ export class AuthService{
                     let obj = data.json();
                     const token = obj['token_type'] + ' ' + obj['access_token'];
                     localStorage.setItem("token",token);
+                    localStorage.setItem("username",user.username);
                 }else{
                     alert("Oops, something went wrong. Try again.");
                 }
@@ -39,6 +40,7 @@ export class AuthService{
 
     logOut(): void{
         localStorage.removeItem("token");
+        localStorage.removeItem("username");
     }
 
     isLoggedIn(): boolean{

@@ -16,6 +16,9 @@ export class LoginHeaderComponent {
   public user: BAIdentityUser;
   constructor(private authService: AuthService)
   {
+    if(this.isLoggedIn()){
+      this.user = new BAIdentityUser(null, null, null, localStorage.getItem("username"));
+    }
   }
   
   onSubmit(user: BAIdentityUser, ngFform: NgForm){
