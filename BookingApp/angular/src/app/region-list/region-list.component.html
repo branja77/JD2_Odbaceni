@@ -1,0 +1,9 @@
+<div class="w3-content" style="max-width:1532px;">
+  <ul>
+    <li *ngFor="let region of regions">
+        <a *ngIf="region.Country.Id == countryId" [routerLink]="['/place/'] + region.Id" >{{region.Name}}</a>
+    </li>
+  </ul>
+  <div style="padding: 50px"> 
+    <a [routerLink]="['/new-region']" class="w3-bar-item w3-button w3-red w3-mobile" >New Region</a>
+  </div>

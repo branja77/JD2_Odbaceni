@@ -37,6 +37,7 @@ namespace BookingApp.Controllers
 
         // PUT: api/Region/5
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult PutRegion(int id, Region region)
         {
             if (!ModelState.IsValid)
@@ -72,6 +73,7 @@ namespace BookingApp.Controllers
 
         // POST: api/Region
         [ResponseType(typeof(Region))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult PostRegion(Region region)
         {
             if (!ModelState.IsValid)

@@ -72,6 +72,7 @@ namespace BookingApp.Controllers
 
         // POST: api/Country
         [ResponseType(typeof(Country))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult PostCountry(Country country)
         {
             if (!ModelState.IsValid)

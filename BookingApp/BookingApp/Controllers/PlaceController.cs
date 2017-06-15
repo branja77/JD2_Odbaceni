@@ -36,6 +36,7 @@ namespace BookingApp.Controllers
 
         // POST api/values
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult PostPlace(Place place)
         {
             if (!ModelState.IsValid)

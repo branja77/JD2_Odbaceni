@@ -13,6 +13,7 @@ import { AccommodationComponent } from './accommodation/accommodation.component'
 import { RoomComponent } from './room/room.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentComponent } from './comment/comment.component';
+import { NewCountryComponent } from './new-country/new-country.component';
 import { RoomListComponent } from './room-list/room-list.component';
 import { AccommodationShowComponent} from './accommodation-show/accommodation-show.component';
 import { LoginHeaderComponent } from './login-header/login-header.component';
@@ -28,6 +29,8 @@ import { RoomReservationComponent} from './room-reservation/room-reservation.com
 import { NewAccommodationComponent } from './new-accommodation/new-accommodation.component';
 import { NewRoomComponent } from './new-room/new-room.component';
 import { MyReservationsComponent } from './my-reservations/my-reservations.component';
+import { RegionListComponent } from './region-list/region-list.component';
+import { HttpRegionsService} from './services/http-regions.service';
 
 
 const Routes = [
@@ -41,7 +44,9 @@ const Routes = [
   {path: "new-accommodation", component: NewAccommodationComponent},
   {path: "new-room/:id", component: NewRoomComponent},
   {path: "my-reservations", component: MyReservationsComponent},
-  {path: "country-list", component: CountryListComponent }
+  {path: "country-list", component: CountryListComponent },
+  {path: "region-list/:id", component: RegionListComponent},
+  {path: "new-country", component: NewCountryComponent }
 ]
 
 @NgModule({
@@ -61,7 +66,9 @@ const Routes = [
     MyReservationsComponent,
     NewRoomComponent, 
     CountryListComponent,
-    CountryComponent
+    CountryComponent, 
+    RegionListComponent, 
+    NewCountryComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +85,8 @@ const Routes = [
     HttpRoomsService,
     HttpAccommodationTypesService, 
     HttpCountriesService,
-    HttpRoomReservationsService
+    HttpRoomReservationsService, 
+    HttpRegionsService
   ],
   bootstrap: [AppComponent]
 })

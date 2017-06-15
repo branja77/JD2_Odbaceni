@@ -4,29 +4,28 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import 'rxjs/add/operator/toPromise';
-import{Accommodation} from '../model/accommodation.model';
+import{Region} from '../model/region.model';
 
 @Injectable()
-export class HttpAccommodationsService{
-    private webApiURL = 'http://localhost:54042/api/accommodation';  // URL to web api
+export class HttpRegionsService{
+    private webApiURL = 'http://localhost:54042/api/region';  // URL to web api
     private headers = new Headers({'Content-Type': 'application/json'});
     constructor (private http: Http){
-
     }
 
-    getAccommodations():Promise<Array<Accommodation>> {  
+    getRegions():Promise<Array<Region>> {  
         return this.http.get(this.webApiURL).toPromise()
-        .then(response => response.json() as Accommodation[] )
+        .then(response => response.json() as Region[] )
         .catch(this.handleError);
     }
 
-    getAccommodation(id: number):Promise<Accommodation> {  
+    getRegion(id: number):Promise<Region> {  
         return this.http.get(this.webApiURL + '/' + id).toPromise()
-        .then(response => response.json() as Accommodation)
+        .then(response => response.json() as Region)
         .catch(this.handleError);
     }
 
-    postAccommodation(accommodation: Accommodation): Promise<any>  {
+    postRegion(region: Region): Promise<any>  {
         const headers: Headers = new Headers();
         debugger
         if(localStorage.getItem("token") !== null)
@@ -39,14 +38,14 @@ export class HttpAccommodationsService{
         const opts: RequestOptions = new RequestOptions();
         opts.headers = headers;
         
-        return this.http.post(this.webApiURL, accommodation, opts).toPromise().
-            then(response => {response.json();alert("Successfully created new Accommodation"); console.log(response.json())})
+        return this.http.post(this.webApiURL, region, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Created New Region"); console.log(response.json())})
             .catch(this.handleError);
     }
 
       private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    alert(error);
-    return Promise.reject(error.message || error);
+        console.error('An error occurred', error);
+        alert(error)
+        return Promise.reject(error.message || error);
   }
 }
