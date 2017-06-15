@@ -1,14 +1,9 @@
 <div class="w3-content" style="max-width:1532px;">
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Code</th>
-    </tr>
-    <tr class="w3-row-padding w3-padding-16" *ngFor="let country of countryies">
+  <ul>
+    <li *ngFor="let country of countries">
       <app-country [country]="country"></app-country>
-    </tr>
-  </table>
+    </li>
+  </ul>
   <div style="padding: 50px"> 
     <a [routerLink]="['/new-country']" class="w3-bar-item w3-button w3-red w3-mobile" >New Country</a>
   </div>
