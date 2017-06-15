@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.AspNet.Identity;
 
 namespace BookingApp.Controllers
 {
@@ -45,11 +46,6 @@ namespace BookingApp.Controllers
         [Authorize(Roles = "AppUser")]
         public IHttpActionResult PostRoomReservation(RoomReservation roomReservation)
         {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
             if(RoomReservationExists(roomReservation.Id))
             {
                 return BadRequest();
@@ -57,6 +53,9 @@ namespace BookingApp.Controllers
 
             try
             {
+                roomReservation.User = db.Users.Find(RequestContext.Principal.Identity.GetUserId());
+                roomReservation.Room = db.Rooms.Find(roomReservation.Room.Id);
+                roomReservation.Timestamp = DateTime.Now;
                 db.RoomReservations.Add(roomReservation);
                 db.SaveChanges();
                 return Ok(roomReservation);
