@@ -1,0 +1,9 @@
+<div class="w3-content" style="max-width:1532px;">
+  <ul>
+    <li *ngFor="let accommodationType of accommodationTypes">
+      <p>{{accommodationType.Name}}</p>
+    </li>
+  </ul>
+  <div style="padding: 50px"> 
+    <a [routerLink]="['/new-accommodationType']" class="w3-bar-item w3-button w3-red w3-mobile" >New Accommodation Type</a>
+  </div>

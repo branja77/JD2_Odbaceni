@@ -34,6 +34,8 @@ import { RegionListComponent } from './region-list/region-list.component';
 import { HttpRegionsService} from './services/http-regions.service';
 import {PlaceListComponent} from './place-list/place-list.component';
 import {NewPlaceComponent} from './new-place/new-place.component';
+import {AccommodationTypeListComponent} from './accommodationType-list/accommodationType-list.component';
+import { NewAccommodationTypeComponent } from './new-accommodationType/new-accommodationType.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -51,7 +53,9 @@ const Routes = [
   {path: "region-list/:id", component: RegionListComponent},
   {path: "place-list/:id", component: PlaceListComponent},
   {path: "new-country", component: NewCountryComponent },
-  {path: "new-place/:id", component: NewPlaceComponent }
+  {path: "new-place/:id", component: NewPlaceComponent },
+   {path: "accommodationType-list", component: AccommodationTypeListComponent},
+   {path: "new-accommodationType", component: NewAccommodationTypeComponent}
 ]
 
 @NgModule({
@@ -76,7 +80,9 @@ const Routes = [
     PlaceListComponent, 
     NewCountryComponent,
     NewRegionComponent,
-    NewPlaceComponent
+    NewPlaceComponent,
+    AccommodationTypeListComponent,
+    NewAccommodationTypeComponent
   ],
   imports: [
     BrowserModule,
