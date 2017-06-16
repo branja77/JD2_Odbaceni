@@ -1,11 +1,30 @@
 <a [routerLink]="['../region-list/'] + country.Id" >{{country.Name}}</a>
-<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-red w3-margin-bottom">Edit</button>
-<div id="id01" class="w3-modal">
+<button (click)="document.getElementById('{{country.Id}}').style.display='block'" class="w3-button w3-red w3-margin-bottom">Edit</button>
+<div [id]="country.Id" class="w3-modal">
  <div class="w3-modal-content">
-   <div class="w3-container">
-     <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-     <p>Some text. Some text. Some text.</p>
-     <p>Some text. Some text. Some text.</p>
+   <div class="w3-red">
+     <span (click)="document.getElementById('{{country.Id}}').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+     <div class="w3-container">
+      <h2>Edit Country</h2>
+    </div>
+    <form  #f="ngForm" (ngSubmit)="onSubmit(f.value, f)">
+    <div class="w3-container w3-white w3-padding-16">
+          <div class="w3-row-padding" style="margin:0 -16px;">
+            <div class="w3-half w3-margin-bottom">
+              <label>Name</label>
+              <input class="w3-input w3-border" [ngModel]="country.Name" type="text" name="Name" required ngModel>
+            </div>
+            <div class="w3-half">
+              <label>Code</label>
+              <input class="w3-input w3-border" [ngModel]="country.Code" type="text" name="Code" required ngModel>
+            </div>
+          </div>
+          <div class="w3-row-padding" style="margin:8px -16px;">
+          </div>
+          <button class="w3-button w3-dark-grey" type="submit">Edit</button>
+      </div>
+      <input [ngModel]="country.Id" type="hidden" name="Id" required ngModel>
+     </form>
    </div>
  </div>
 </div>
