@@ -7,5 +7,5 @@ export class Comment {
     public grade: number,
     public text: string,
     public user: BAIdentityUser,
-    public accommodation: Accommodation){}
+    public accomodation: Accommodation){}
 }

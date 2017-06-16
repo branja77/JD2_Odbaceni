@@ -26,20 +26,27 @@ export class HttpCommentsService{
     .catch(this.handleError);
   }
 
-    postPlace(accommodation: Comment): Observable<any>  {
-        /*
-        return this.http.post(
-        'http://localhost:54042/api/accommodation',
-        JSON.stringify({
-            accommodation
-        }), opts);
-        */
-        return null;
+    postComment(comment: Comment): Promise<any>  {
+        const headers: Headers = new Headers();
+        debugger
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.post(this.webApiURL, comment, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Created Comment"); console.log(response.json())})
+            .catch(this.handleError);
     }
 
       private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
-    alert(error)
+    alert(error);
     return Promise.reject(error.message || error);
   }
 }

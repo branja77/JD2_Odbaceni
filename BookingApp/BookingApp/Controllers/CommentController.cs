@@ -1,4 +1,5 @@
 ﻿using BookingApp.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -42,17 +43,14 @@ namespace BookingApp.Controllers
         [Authorize(Roles = "AppUser")]
         public IHttpActionResult PostComment(Comment comm)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
             if (CommentExists(comm.Id))
             {
                 return BadRequest();
             }
             try
             {
+                comm.User = db.Users.Find(RequestContext.Principal.Identity.GetUserId());
+                comm.Accomodation = db.Accommodations.Find(comm.Accomodation.Id);
                 db.Comments.Add(comm);
                 db.SaveChanges();
                 return CreatedAtRoute("DefaultApi", new { id = comm.Id }, comm);

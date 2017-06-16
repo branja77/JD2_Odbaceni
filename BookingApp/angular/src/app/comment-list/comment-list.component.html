@@ -4,13 +4,15 @@
   </div>
 </div>
   <div >
-    <div class="w3-row-padding w3-padding-16">
-      <input type="number" placeholder="Grade" max="5" min="1" />
-    </div>
-    <div class="w3-row-padding w3-padding-16">
-        <textarea rows="3" cols="25" style="resize:none" placeholder="Comment here.."></textarea>
-    </div>
-    <div class="w3-row-padding w3-padding-16">
-        <button>Add Comment</button>
-    </div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)" >
+      <div class="w3-row-padding w3-padding-16">
+        <input type="number" name="Grade" placeholder="Grade" max="5" min="1"  required ngModel/>
+      </div>
+      <div class="w3-row-padding w3-padding-16">
+          <textarea rows="3" cols="25" name="Text" style="resize:none" placeholder="Comment here.." required ngModel></textarea>
+      </div>
+      <div class="w3-row-padding w3-padding-16">
+          <button class="w3-button w3-dark-grey" type="submit">Add comment</button>
+      </div>
+    </form>
 </div>
