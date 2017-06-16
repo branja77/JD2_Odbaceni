@@ -4,7 +4,7 @@
   <a [routerLink]="['/country-list']" class="w3-bar-item w3-button w3-red w3-mobile">Countries</a>
 <form  #f="ngForm" (ngSubmit)="onSubmit(f.value, f)">
   <button type="submit" class="w3-bar-item w3-right w3-button w3-light-grey w3-mobile">Log In</button>
-  <input name="password" type="text" placeholder="Password" class="w3-bar-item w3-right w3-light-grey w3-mobile" ngModel/>
+  <input name="password" type="password" placeholder="Password" class="w3-bar-item w3-right w3-light-grey w3-mobile" ngModel/>
   <input name="username" type="text" placeholder="Username" class="w3-bar-item w3-right w3-light-grey w3-mobile" ngModel/>
 </form>
 </div>
