@@ -1,0 +1,10 @@
+<div class="w3-content" style="max-width:1532px;">
+  <ul *ngFor="let place of places">
+    <li *ngIf="place.Region.Id == regionId">
+        <a>{{place.Name}}</a>
+    </li>
+  </ul>
+  <div style="padding: 50px"> 
+    <a [routerLink]="['/new-place/'] + regionId" class="w3-bar-item w3-button w3-red w3-mobile" >New Place</a>
+  </div>
+</div>

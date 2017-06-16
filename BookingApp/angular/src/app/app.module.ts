@@ -32,7 +32,8 @@ import { NewRoomComponent } from './new-room/new-room.component';
 import { MyReservationsComponent } from './my-reservations/my-reservations.component';
 import { RegionListComponent } from './region-list/region-list.component';
 import { HttpRegionsService} from './services/http-regions.service';
-
+import {PlaceListComponent} from './place-list/place-list.component';
+import {NewPlaceComponent} from './new-place/new-place.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -44,11 +45,13 @@ const Routes = [
   {path: "", redirectTo:"home", pathMatch: "full"},
   {path: "new-accommodation", component: NewAccommodationComponent},
   {path: "new-room/:id", component: NewRoomComponent},
-   {path: "new-region", component: NewRegionComponent},
+  {path: "new-region/:id", component: NewRegionComponent},
   {path: "my-reservations", component: MyReservationsComponent},
   {path: "country-list", component: CountryListComponent },
   {path: "region-list/:id", component: RegionListComponent},
-  {path: "new-country", component: NewCountryComponent }
+  {path: "place-list/:id", component: PlaceListComponent},
+  {path: "new-country", component: NewCountryComponent },
+  {path: "new-place/:id", component: NewPlaceComponent }
 ]
 
 @NgModule({
@@ -69,9 +72,11 @@ const Routes = [
     NewRoomComponent, 
     CountryListComponent,
     CountryComponent, 
-    RegionListComponent, 
+    RegionListComponent,
+    PlaceListComponent, 
     NewCountryComponent,
-    NewRegionComponent
+    NewRegionComponent,
+    NewPlaceComponent
   ],
   imports: [
     BrowserModule,

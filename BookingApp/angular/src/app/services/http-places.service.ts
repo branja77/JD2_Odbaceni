@@ -26,15 +26,21 @@ export class HttpPlacesService{
     .catch(this.handleError);
   }
 
-    postPlace(accommodation: Place): Observable<any>  {
-        /*
-        return this.http.post(
-        'http://localhost:54042/api/accommodation',
-        JSON.stringify({
-            accommodation
-        }), opts);
-        */
-        return null;
+    postPlace(place: Place): Promise<any>  {
+       const headers: Headers = new Headers();
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.post(this.webApiURL, place, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Created New Place"); console.log(response.json())})
+            .catch(this.handleError);
     }
 
       private handleError(error: any): Promise<any> {

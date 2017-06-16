@@ -15,20 +15,16 @@ import{ HttpRegionsService} from '../services/http-regions.service';
   templateUrl: './new-region.component.html'
 })
 export class NewRegionComponent {
-  public countries: Country[];
+  public countryID: number;
   public region: Region;
   error: any;
     constructor(private router: Router, private activatedRoute: ActivatedRoute,
      private countriesService: HttpCountriesService, private regionsService: HttpRegionsService){
-
+        activatedRoute.params.subscribe(params => {this.countryID = params["id"]});
      }
     onSubmit(region: Region){
       this.region = region;
+      this.region.country = new Country(this.countryID, null, null);
       this.regionsService.postRegion(this.region);
-    }
-
-    ngOnInit()
-    {
-        this.countriesService.getCountries().then(coutries=>this.countries = coutries);
     }
 }

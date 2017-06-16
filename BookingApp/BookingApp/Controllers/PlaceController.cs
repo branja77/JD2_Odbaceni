@@ -50,6 +50,7 @@ namespace BookingApp.Controllers
             }
             try
             {
+                place.Region = db.Regions.Find(place.Region.Id);
                 db.Places.Add(place);
                 db.SaveChanges();
                 return CreatedAtRoute("DefaultApi", new { id = place.Id }, place);
