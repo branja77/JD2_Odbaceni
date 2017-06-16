@@ -1,5 +1,16 @@
-  <div class="w3-row-padding w3-padding-16" *ngFor="let comment of comments">
-    <div *ngIf="comment">
-      <app-comment *ngIf="accommodation.Id == comment.Accomodation.Id" [comment]="comment"></app-comment>
-    </div>
+<div class="w3-row-padding w3-padding-16" *ngFor="let comment of comments">
+  <div *ngIf="comment">
+    <app-comment *ngIf="accommodation.Id == comment.Accomodation.Id" [comment]="comment"></app-comment>
   </div>
+</div>
+  <div >
+    <div class="w3-row-padding w3-padding-16">
+      <input type="number" placeholder="Grade" max="5" min="1" />
+    </div>
+    <div class="w3-row-padding w3-padding-16">
+        <textarea rows="3" cols="25" style="resize:none" placeholder="Comment here.."></textarea>
+    </div>
+    <div class="w3-row-padding w3-padding-16">
+        <button>Add Comment</button>
+    </div>
+</div>

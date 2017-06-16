@@ -22,7 +22,7 @@
     <label>Owner: </label>{{accommodation.Owner.Email}}
    </div>
    <div>
-     <button (click)="showComments()">Show comments</button>
+     <a href="javascript:;" (click)="showComments()">Show comments</a>
    </div>
    <div id="comms" *ngIf="showComm">
      <app-comment-list [accommodation]="accommodation"></app-comment-list>

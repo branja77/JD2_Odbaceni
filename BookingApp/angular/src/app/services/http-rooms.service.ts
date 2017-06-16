@@ -39,7 +39,7 @@ export class HttpRoomsService{
         opts.headers = headers;
         
         return this.http.post(this.webApiURL, room, opts).toPromise().
-            then(response => {response.json(); alert("Successfully Created New Accommodation Type"); console.log(response.json())})
+            then(response => {response.json(); alert("Successfully Created New Room"); console.log(response.json())})
             .catch(this.handleError);
     }
 
