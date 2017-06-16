@@ -20,6 +20,7 @@ export class NewCountryComponent {
 
      }
     onSubmit(country: Country){
+      debugger
       this.country = country;
       this.countriesService.postCountry(this.country);
   }

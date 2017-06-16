@@ -11,6 +11,7 @@ import { CountryListComponent } from './country-list/country-list.component';
 import { CountryComponent } from './country/country.component';
 import { AccommodationComponent } from './accommodation/accommodation.component';
 import { RoomComponent } from './room/room.component';
+import { NewRegionComponent } from './new-region/new-region.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentComponent } from './comment/comment.component';
 import { NewCountryComponent } from './new-country/new-country.component';
@@ -43,6 +44,7 @@ const Routes = [
   {path: "", redirectTo:"home", pathMatch: "full"},
   {path: "new-accommodation", component: NewAccommodationComponent},
   {path: "new-room/:id", component: NewRoomComponent},
+   {path: "new-region", component: NewRegionComponent},
   {path: "my-reservations", component: MyReservationsComponent},
   {path: "country-list", component: CountryListComponent },
   {path: "region-list/:id", component: RegionListComponent},
@@ -68,7 +70,8 @@ const Routes = [
     CountryListComponent,
     CountryComponent, 
     RegionListComponent, 
-    NewCountryComponent
+    NewCountryComponent,
+    NewRegionComponent
   ],
   imports: [
     BrowserModule,
