@@ -37,12 +37,9 @@ namespace BookingApp.Controllers
 
         // PUT: api/Country/5
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult PutCountry(int id, Country country)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
             if (id != country.Id)
             {
@@ -88,6 +85,7 @@ namespace BookingApp.Controllers
 
         // DELETE: api/Country/5
         [ResponseType(typeof(Country))]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteCountry(int id)
         {
             Country country = db.Countries.Find(id);
@@ -97,7 +95,14 @@ namespace BookingApp.Controllers
             }
 
             db.Countries.Remove(country);
-            db.SaveChanges();
+            try {
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
+            
 
             return Ok(country);
         }

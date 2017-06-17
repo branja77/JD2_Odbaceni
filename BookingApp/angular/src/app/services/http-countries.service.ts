@@ -43,6 +43,42 @@ export class HttpCountriesService{
             .catch(this.handleError);
     }
 
+    putCountry(country: Country): Promise<any> {
+        const headers: Headers = new Headers();
+        debugger
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.put(this.webApiURL + '/' + country.Id, country, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Edited Country"); console.log(response.json())})
+            .catch(this.handleError);
+    }
+
+    deleteCountry(countryId: number): Promise<any> {
+        const headers: Headers = new Headers();
+        debugger
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.delete(this.webApiURL + '/' + countryId, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Deleted Country"); console.log(response.json())})
+            .catch(this.handleError);
+    }
+
       private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
         alert(error)

@@ -1,7 +1,7 @@
 <div class="w3-content" style="max-width:1532px;">
   <ul *ngFor="let place of places">
     <li *ngIf="place.Region.Id == regionId">
-        <a>{{place.Name}}</a>
+        <a [routerLink]="['../../accommodation-list/'] + place.Name">{{place.Name}}</a>
     </li>
   </ul>
   <div style="padding: 50px"> 

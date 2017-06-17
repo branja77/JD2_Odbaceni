@@ -18,7 +18,16 @@ export class CountryComponent {
   @Input() country: Country;
 
   onSubmit(country: Country){
-    debugger
-      //this.countriesService.postCountry(country);
+      this.countriesService.putCountry(country);
+  }
+  showModal(show: boolean){
+    if(show){
+      document.getElementById(this.country.Id.toString()).style.display='block';
+    }else{
+      document.getElementById(this.country.Id.toString()).style.display='none';
+    }
+  }
+  deleteCountry(country: Country){
+    this.countriesService.deleteCountry(country.Id);
   }
 }

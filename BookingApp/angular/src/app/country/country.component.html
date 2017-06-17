@@ -1,9 +1,10 @@
 <a [routerLink]="['../region-list/'] + country.Id" >{{country.Name}}</a>
-<button (click)="document.getElementById('{{country.Id}}').style.display='block'" class="w3-button w3-red w3-margin-bottom">Edit</button>
+<button (click)="showModal(true, country)" class="w3-button w3-red w3-margin-bottom">Edit</button>
+<button (click)="deleteCountry(country)" class="w3-button w3-red w3-margin-bottom">Delete</button>
 <div [id]="country.Id" class="w3-modal">
  <div class="w3-modal-content">
    <div class="w3-red">
-     <span (click)="document.getElementById('{{country.Id}}').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+     <span (click)="showModal(false)" class="w3-button w3-display-topright">&times;</span>
      <div class="w3-container">
       <h2>Edit Country</h2>
     </div>
