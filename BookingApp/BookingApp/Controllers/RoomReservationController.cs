@@ -83,11 +83,13 @@ namespace BookingApp.Controllers
             {
                 return BadRequest();
             }
-
+            roomReservation.Timestamp = DateTime.Now;
+            roomReservation.User = db.Users.Find(RequestContext.Principal.Identity.GetUserId());
             db.Entry(roomReservation).State = EntityState.Modified;
 
             try
             {
+
                 db.SaveChanges();
             }
             catch(DbUpdateConcurrencyException)

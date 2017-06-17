@@ -60,6 +60,23 @@ export class HttpRoomReservationsService{
             .catch(this.handleError);
     }
 
+    putRoomResrvation(roomReservation: RoomReservation): Promise<any>  {
+        const headers: Headers = new Headers();
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.put(this.webApiURL + '/'+ roomReservation.Id, roomReservation, opts).toPromise().
+            then(response => {response.json(); console.log(response.json())})
+            .catch(this.handleError);
+    }
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
         alert(error);

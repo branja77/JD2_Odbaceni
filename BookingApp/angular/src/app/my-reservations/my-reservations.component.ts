@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   Router,
   ActivatedRoute
@@ -13,13 +13,30 @@ import{ HttpRoomReservationsService} from '../services/http-roomReservations.ser
   providers: [HttpRoomReservationsService]
 })
 export class MyReservationsComponent {
-  public roomReservations: RoomReservation[]; 
+  public roomReservations: RoomReservation[];
+  roomReservation: RoomReservation;
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private roomReservationsServic: HttpRoomReservationsService) {
     }
+
    Delete(reservation: RoomReservation){
-     debugger
      this.roomReservationsServic.deleteRoomReservation(reservation.Id).then(f=>{window.location.reload()});
    }
+
+  editRoomReservation(reservation: RoomReservation){
+      debugger
+      this.roomReservationsServic.putRoomResrvation(reservation).
+      then(f => {
+        window.location.reload();
+    });
+
+  }
+  showModal(show: boolean, reservation: RoomReservation){
+    if(show){
+      document.getElementById(reservation.Id.toString()).style.display='block';
+    }else{
+      document.getElementById(reservation.Id.toString()).style.display='none';
+    }
+  }
 
    ngOnInit()
    {
