@@ -2,6 +2,33 @@
   <ul *ngFor="let region of regions">
     <li *ngIf="region.Country.Id == countryId">
         <a [routerLink]="['/place-list/'] + region.Id" >{{region.Name}}</a>
+        <button (click)="showModal(true, region)" class="w3-button w3-red w3-margin-bottom">Edit</button>
+        <button (click)="deleteRegion(region)" class="w3-button w3-red w3-margin-bottom">Delete</button>
+        <div [id]="region.Id" class="w3-modal">
+        <div class="w3-modal-content">
+          <div class="w3-red">
+            <span (click)="showModal(false, region)" class="w3-button w3-display-topright">&times;</span>
+            <div class="w3-container">
+              <h2>Edit Region</h2>
+            </div>
+            <form  #f="ngForm" (ngSubmit)="editRegion(f.value, f)">
+            <div class="w3-container w3-white w3-padding-16">
+                  <div class="w3-row-padding" style="margin:0 -16px;">
+                    <div class="w3-half w3-margin-bottom">
+                      <label>Name</label>
+                      <input class="w3-input w3-border" [ngModel]="region.Name" type="text" name="Name" required ngModel>
+                    </div>
+                  </div>
+                  <div class="w3-row-padding" style="margin:8px -16px;">
+                  </div>
+                  <button class="w3-button w3-dark-grey" type="submit">Edit</button>
+              </div>
+              <input [ngModel]="region.Id" type="hidden" name="Id" required ngModel>
+              <input [ngModel]="region.Country" type="hidden" name="Country" required ngModel>
+            </form>
+          </div>
+        </div>
+        </div>
     </li>
   </ul>
   <div style="padding: 50px"> 

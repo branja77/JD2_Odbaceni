@@ -17,8 +17,12 @@ export class CountryComponent {
   }
   @Input() country: Country;
 
-  onSubmit(country: Country){
-      this.countriesService.putCountry(country);
+  editCountry(country: Country){
+      this.countriesService.putCountry(country).
+      then(f => {
+        window.location.reload();
+    });
+
   }
   showModal(show: boolean){
     if(show){
@@ -28,6 +32,10 @@ export class CountryComponent {
     }
   }
   deleteCountry(country: Country){
-    this.countriesService.deleteCountry(country.Id);
+    this.countriesService.deleteCountry(country.Id).
+    then(f => {
+      window.location.reload();
+    });
+    
   }
 }

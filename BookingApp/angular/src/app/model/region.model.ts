@@ -2,7 +2,7 @@ import {Country} from './country.model';
 
 export class Region{
     constructor(
-        public id: number,
+        public Id: number,
         public name: string,
         public country: Country
     ){}
