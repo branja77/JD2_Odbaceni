@@ -22,4 +22,25 @@ export class PlaceListComponent implements OnInit {
   ngOnInit(): void {
     this.placesService.getPlaces().then(places => {this.places = places;});
   }
+
+    editPlace(place: Place){
+      this.placesService.putPlace(place).
+      then(f => {
+        window.location.reload();
+      });
+  }
+
+  showModal(show: boolean, place: Place){
+    if(show){
+      document.getElementById(place.Id.toString()).style.display='block';
+    }else{
+      document.getElementById(place.Id.toString()).style.display='none';
+    }
+  }
+  deletePlace(place: Place){
+    this.placesService.deletePlace(place.Id).
+    then(f => {
+      window.location.reload();
+    });
+  }
 }

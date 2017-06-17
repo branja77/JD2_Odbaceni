@@ -43,6 +43,42 @@ export class HttpPlacesService{
             .catch(this.handleError);
     }
 
+    putPlace(place: Place): Promise<any> {
+        const headers: Headers = new Headers();
+        debugger
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.put(this.webApiURL + '/' + place.Id, place, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Edited Place"); console.log(response.json())})
+            .catch(this.handleError);
+    }
+
+    deletePlace(placeId: number): Promise<any> {
+        const headers: Headers = new Headers();
+        debugger
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.delete(this.webApiURL + '/' + placeId, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Deleted Place"); console.log(response.json())})
+            .catch(this.handleError);
+    }
+
       private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     alert(error)

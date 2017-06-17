@@ -124,7 +124,14 @@ namespace BookingApp.Controllers
                     db.Accommodations.Remove(elem);
                 }
                 db.Places.Remove(place);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(HttpStatusCode.ExpectationFailed);
+                }
                 return Ok(place);
             }
             catch (Exception ex)

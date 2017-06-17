@@ -44,6 +44,42 @@ export class HttpAccommodationTypesService{
             .catch(this.handleError);
     }
 
+    putAccommodationType(accommodationType: AccommodationType): Promise<any> {
+        const headers: Headers = new Headers();
+        debugger
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.put(this.webApiURL + '/' + accommodationType.Id, accommodationType, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Edited Accommodation Type"); console.log(response.json())})
+            .catch(this.handleError);
+    }
+
+    deleteAccommodationType(accommodationTypeId: number): Promise<any> {
+        const headers: Headers = new Headers();
+        debugger
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.delete(this.webApiURL + '/' + accommodationTypeId, opts).toPromise().
+            then(response => {response.json(); alert("Successfully Deleted Acommodation Type"); console.log(response.json())})
+            .catch(this.handleError);
+    }
+
       private handleError(error: any): Promise<any> {
             console.error('An error occurred', error);
             alert(error);

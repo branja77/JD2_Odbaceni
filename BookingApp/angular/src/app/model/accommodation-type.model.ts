@@ -1,5 +1,5 @@
 export class AccommodationType {
   constructor(
-    public id: number,
+    public Id: number,
     public name: string){}
 }

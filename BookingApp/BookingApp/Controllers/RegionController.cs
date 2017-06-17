@@ -99,7 +99,14 @@ namespace BookingApp.Controllers
             }
 
             db.Regions.Remove(region);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(HttpStatusCode.ExpectationFailed);
+            }
 
             return Ok(region);
         }

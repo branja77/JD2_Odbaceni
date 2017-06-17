@@ -35,7 +35,6 @@ export class CountryComponent {
     this.countriesService.deleteCountry(country.Id).
     then(f => {
       window.location.reload();
-    });
-    
+    });  
   }
 }

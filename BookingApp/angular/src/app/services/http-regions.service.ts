@@ -75,7 +75,7 @@ export class HttpRegionsService{
         opts.headers = headers;
         
         return this.http.delete(this.webApiURL + '/' + regionId, opts).toPromise().
-            then(response => {response.json(); alert("Successfully Deleted Country"); console.log(response.json())})
+            then(response => {response.json(); alert("Successfully Deleted Place"); console.log(response.json())})
             .catch(this.handleError);
     }
 
