@@ -40,7 +40,7 @@ export class MyReservationsComponent {
 
    ngOnInit()
    {
-     this.roomReservationsServic.getRoomReservations().then(roomReservations => this.roomReservations=roomReservations);
-     console.log(this.roomReservations);
+     this.roomReservationsServic.getRoomReservations().then(roomReservations => {this.roomReservations=roomReservations; console.log(this.roomReservations);});
+     
    }
 }
