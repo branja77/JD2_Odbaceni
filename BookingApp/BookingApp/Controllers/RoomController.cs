@@ -62,7 +62,7 @@ namespace BookingApp.Controllers
 
         // PUT api/values/5
         [ResponseType(typeof(void))]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult PutRoom(int id, Room room)
         {
             if(!ModelState.IsValid)
@@ -103,7 +103,7 @@ namespace BookingApp.Controllers
 
         // DELETE api/values/5
         [ResponseType(typeof(void))]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin")]
         public IHttpActionResult DeleteRoom(int id)
         {
             Room room = db.Rooms.Find(id);

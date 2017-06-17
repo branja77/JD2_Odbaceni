@@ -2,7 +2,7 @@ import { Accommodation } from './accommodation.model';
 
 export class Room{
     constructor(
-        public id: number,
+        public Id: number,
         public roomNumber: number,
         public bedCount: number,
         public description: string,
