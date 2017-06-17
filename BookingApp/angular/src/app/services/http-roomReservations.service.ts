@@ -26,7 +26,6 @@ export class HttpRoomReservationsService{
     .catch(this.handleError);
     }
     postRoomReservation(roomReservation: RoomReservation): Promise<any>  {
-        debugger
         const headers: Headers = new Headers();
         if(localStorage.getItem("token") !== null)
         {
@@ -43,8 +42,27 @@ export class HttpRoomReservationsService{
             .catch(this.handleError);
     }
 
+    deleteRoomReservation(id: number): Promise<any>  {
+        debugger
+        const headers: Headers = new Headers();
+        if(localStorage.getItem("token") !== null)
+        {
+            headers.append("Authorization", localStorage.getItem("token"));
+        }
+        headers.append('Accept', 'application/json');
+        headers.append('Content-type', 'application/json');
+
+        const opts: RequestOptions = new RequestOptions();
+        opts.headers = headers;
+        
+        return this.http.delete(this.webApiURL + '/' + id, opts).toPromise().
+            then(response => {response.json(); console.log(response.json())})
+            .catch(this.handleError);
+    }
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
+        alert(error);
         return Promise.reject(error.message || error);
     }
 }

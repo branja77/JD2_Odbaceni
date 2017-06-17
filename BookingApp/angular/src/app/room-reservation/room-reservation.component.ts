@@ -22,10 +22,8 @@ export class RoomReservationComponent {
    onSubmit(roomReservation : RoomReservation){
      //napraviti objekat roomresrvation, pozvati servis, obavjestiti korisnika, redirekcija   
      this.roomReservation = roomReservation;
-     this.roomReservation.room = new Room(this.id, null, null, null, null, null);
-     this.roomReservationsService.postRoomReservation(roomReservation);
-
      const link = ['/my-reservations'];
-     this.router.navigate(link);
+     this.roomReservation.room = new Room(this.id, null, null, null, null, null);
+     this.roomReservationsService.postRoomReservation(roomReservation).then(f=> {this.router.navigate(link)});
    }
 }

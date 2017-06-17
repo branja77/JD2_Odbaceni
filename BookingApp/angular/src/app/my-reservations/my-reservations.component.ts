@@ -17,12 +17,13 @@ export class MyReservationsComponent {
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private roomReservationsServic: HttpRoomReservationsService) {
     }
    Delete(reservation: RoomReservation){
-     alert(reservation.id)
+     debugger
+     this.roomReservationsServic.deleteRoomReservation(reservation.Id).then(f=>{window.location.reload()});
    }
 
    ngOnInit()
    {
-     this.roomReservationsServic.getRoomReservations().then(roomReservations => this.roomReservations=roomReservations)
+     this.roomReservationsServic.getRoomReservations().then(roomReservations => this.roomReservations=roomReservations);
      console.log(this.roomReservations);
    }
 }

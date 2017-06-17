@@ -3,7 +3,7 @@ import { BAIdentityUser } from './baidentity-user.model'
 
 export class RoomReservation{
     constructor(
-        public id: number,
+        public Id: number,
         public startDate: Date,
         public endDate: Date,
         public timeStamp: Date,
