@@ -39,6 +39,8 @@ import {NewPlaceComponent} from './new-place/new-place.component';
 import {AccommodationTypeListComponent} from './accommodationType-list/accommodationType-list.component';
 import { NewAccommodationTypeComponent } from './new-accommodationType/new-accommodationType.component';
 import { MapComponent } from './map/map.component';
+import { NotificationService } from './services/notification.service';
+import { NotificationsComponent } from './notifications/notifications.component
 
 
 const Routes = [
@@ -87,7 +89,8 @@ const Routes = [
     NewPlaceComponent,
     AccommodationTypeListComponent,
     NewAccommodationTypeComponent,
-    MapComponent
+    MapComponent, 
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +112,8 @@ const Routes = [
     HttpAccommodationTypesService, 
     HttpCountriesService,
     HttpRoomReservationsService, 
-    HttpRegionsService
+    HttpRegionsService, 
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
