@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {MapInfo} from './map-info.model'
+import { Accommodation } from '../model/accommodation.model'
 
 @Component({
   selector: 'map',
@@ -8,7 +8,7 @@ import {MapInfo} from './map-info.model'
   styles: ['agm-map {height: 300px; width: 500px;}'] //postavljamo sirinu i visinu mape
 })
 export class MapComponent implements OnInit {
-  @Input() mapInfo: MapInfo
+  @Input() accommodation: Accommodation;
 
   constructor() { }
 

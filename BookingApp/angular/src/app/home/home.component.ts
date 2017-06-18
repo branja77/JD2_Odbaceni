@@ -4,7 +4,6 @@ import {NgForm} from '@angular/forms';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import{ HttpPlacesService} from '../services/http-places.service';
-import {MapInfo} from "../map/map-info.model";
 
 @Component({
   selector: 'app-home',
@@ -13,9 +12,7 @@ import {MapInfo} from "../map/map-info.model";
 export class HomeComponent implements OnInit{
     places: Place[]; 
     error: any;
-    mapInfo: MapInfo;
     constructor(private router: Router, private placesService: HttpPlacesService){
-      this.mapInfo = new MapInfo(45.251667, 19.836944, "", "" , "" , "");
     }
 
     ngOnInit(){
