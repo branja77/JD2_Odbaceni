@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
+import { ImageUploadModule } from 'angular2-image-upload';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -57,8 +58,8 @@ const Routes = [
   {path: "place-list/:id", component: PlaceListComponent},
   {path: "new-country", component: NewCountryComponent },
   {path: "new-place/:id", component: NewPlaceComponent },
-   {path: "accommodationType-list", component: AccommodationTypeListComponent},
-   {path: "new-accommodationType", component: NewAccommodationTypeComponent}
+  {path: "accommodationType-list", component: AccommodationTypeListComponent},
+  {path: "new-accommodationType", component: NewAccommodationTypeComponent}
 ]
 
 @NgModule({
@@ -95,7 +96,8 @@ const Routes = [
     JsonpModule,
     RouterModule.forRoot(Routes),
         //prilikom import-a mape prosleđujemo Google API key koji dobijamo preko google konzole
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'})
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'}),
+    ImageUploadModule.forRoot()
     
   ],
   providers: [

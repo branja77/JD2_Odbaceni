@@ -17,24 +17,28 @@
               <label>Address</label>
               <input class="w3-input w3-border" type="text" name="Address" required ngModel>
             </div>
-            <div class="w3-half">
+           <!-- <div class="w3-half">
               <label>Image url</label>
               <input class="w3-input w3-border" type="text" name="ImageUrl" required ngModel>
-            </div>
+            </div>-->
             <div class="w3-row-padding" style="margin:8px -16px;">         
-            <div class="w3-half">
-              <label><i class="fa fa-place"></i>Places</label>          
-              <select name="Place"  required ngModel>
-                  <option *ngFor="let place of places" [ngValue]="place">{{place.Name}}</option>
-              </select>
+              <div class="w3-half">
+                <label><i class="fa fa-place"></i>Places</label>          
+                <select name="Place"  required ngModel>
+                    <option *ngFor="let place of places" [ngValue]="place">{{place.Name}}</option>
+                </select>
+              </div>
+              <div class="w3-half">
+                <label><i class="fa fa-place"></i>Accommodation Type</label>          
+                <select name="AccomodationType"  required ngModel>
+                    <option *ngFor="let accommodationType of accommodationTypes" [ngValue]="accommodationType">{{accommodationType.Name}}</option>
+                </select>
+              </div>
             </div>
             <div class="w3-half">
-              <label><i class="fa fa-place"></i>Accommodation Type</label>          
-              <select name="AccomodationType"  required ngModel>
-                  <option *ngFor="let accommodationType of accommodationTypes" [ngValue]="accommodationType">{{accommodationType.Name}}</option>
-              </select>
-            </div>
-            </div>
+                <label><i class="fa fa-image"></i>Accommodation Image</label>          
+                   <image-upload [url]="'assets/images/'" name="NekoIme"></image-upload>
+              </div>
           </div>
           <div class="w3-row-padding" style="margin:8px -16px;">
           </div>

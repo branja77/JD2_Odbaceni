@@ -9,7 +9,7 @@
         <button class="w3-button w3-block w3-black w3-margin-bottom" (click)="gotoDetail(accommodation.Id)">Details</button>
         <button class="w3-button w3-block w3-black w3-margin-bottom"(click)= "showModal(true)">Edit</button>
         <button class="w3-button w3-block w3-black w3-margin-bottom" (click)="deleteAccommodation(accommodation)">Delete</button>
-        <button class="w3-button w3-block w3-black w3-margin-bottom" (click)="showModal2(true)">Google maps</button>
+        <button class="w3-button w3-block w3-black w3-margin-bottom" (click)="showModal2(true, accommodation)">Google maps</button>
       </div>
   </div>
 <div [id]="accommodation.Id" class="w3-modal">

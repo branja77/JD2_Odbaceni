@@ -10,13 +10,13 @@ import {MapInfo} from "../map/map-info.model";
 
 @Component({
   selector: 'app-accommodation',
-  templateUrl: './accommodation.component.html',
+  templateUrl: './accommodation.component.html'
 })
 export class AccommodationComponent {
   mapInfo: MapInfo;
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private accService: HttpAccommodationsService)
   {
-       this.mapInfo = new MapInfo(45.251667, 19.836944, "", "" , "" , "");
+    this.mapInfo = new MapInfo(45.251667, 19.836944, "", "" , "" , "");
   }
   @Input() accommodation: Accommodation;
 
@@ -41,9 +41,7 @@ export class AccommodationComponent {
   }
 
   showModal2(show: boolean, accommodation: Accommodation){
-    // debugger
-    // this.mapInfo = new MapInfo(accommodation.Latitude, accommodation.Longitude, "", "" , "" , "");
-    // alert(accommodation.Latitude + ' ' + accommodation.Longitude);
+    this.mapInfo = new MapInfo(accommodation.Latitude, accommodation.Longitude, "", "" , "" , "");
     if(show){
       document.getElementById(this.accommodation.Place.toString()).style.display='block';
     }else{
