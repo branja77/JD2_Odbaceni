@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -36,6 +37,8 @@ import {PlaceListComponent} from './place-list/place-list.component';
 import {NewPlaceComponent} from './new-place/new-place.component';
 import {AccommodationTypeListComponent} from './accommodationType-list/accommodationType-list.component';
 import { NewAccommodationTypeComponent } from './new-accommodationType/new-accommodationType.component';
+import { MapComponent } from './map/map.component';
+
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -82,14 +85,18 @@ const Routes = [
     NewRegionComponent,
     NewPlaceComponent,
     AccommodationTypeListComponent,
-    NewAccommodationTypeComponent
+    NewAccommodationTypeComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     JsonpModule,
-    RouterModule.forRoot(Routes)
+    RouterModule.forRoot(Routes),
+        //prilikom import-a mape prosleđujemo Google API key koji dobijamo preko google konzole
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'})
+    
   ],
   providers: [
     AuthService, 
