@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BookingApp.Controllers
 {
@@ -71,20 +72,43 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Manager")]
         public IHttpActionResult PutAccommodation(int id, Accommodation accommodation)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest();
             }
 
             if (id != accommodation.Id)
             {
                 return BadRequest();
             }
+            var userStore = new UserStore<BAIdentityUser>(db);
+            var userManager = new UserManager<BAIdentityUser>(userStore);
+            string userId = RequestContext.Principal.Identity.GetUserId();
+            IList<string> roles =  userManager.GetRoles<BAIdentityUser, string>(userId);
 
-            db.Entry(accommodation).State = EntityState.Modified;
+            Accommodation accommodationForChange = db.Accommodations.Find(accommodation.Id);
+            if(accommodationForChange.Approved == false && accommodation.Approved == true &&
+                !roles.Contains("Admin"))
+            {
+                return StatusCode(HttpStatusCode.Unauthorized);
+            }
+            else if (accommodationForChange.Owner.Id != userId)
+            {
+                return StatusCode(HttpStatusCode.Unauthorized);
+            }
+
+
+            accommodationForChange.Address = accommodation.Address;
+            accommodationForChange.Description = accommodation.Description;
+            accommodationForChange.Name = accommodation.Name;
+            if (accommodation.Approved)
+            {
+                accommodationForChange.Approved = true;
+            }
+            
 
             try
             {
@@ -111,13 +135,24 @@ namespace BookingApp.Controllers
         }
 
         [ResponseType(typeof(void))]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Manager")]
         public IHttpActionResult DeleteAccommodation(int id)
         {
+            var userStore = new UserStore<BAIdentityUser>(db);
+            var userManager = new UserManager<BAIdentityUser>(userStore);
+            string userId = RequestContext.Principal.Identity.GetUserId();
+            IList<string> roles = userManager.GetRoles<BAIdentityUser, string>(userId);
+
             Accommodation accommodation = db.Accommodations.Find(id);
+            
             if (accommodation == null)
             {
                 return BadRequest();
+            }
+
+            if(!roles.Contains("Admin") && accommodation.Owner.Id != userId)
+            {
+                return StatusCode(HttpStatusCode.Unauthorized);
             }
 
             try

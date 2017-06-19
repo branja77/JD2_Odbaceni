@@ -41,6 +41,7 @@ import { NewAccommodationTypeComponent } from './new-accommodationType/new-accom
 import { MapComponent } from './map/map.component';
 import { NotificationService } from './services/notification.service';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { UnapprovedAccommodationsComponent } from './unapproved-accommodations/unapproved-accommodations.component';
 
 
 const Routes = [
@@ -61,7 +62,8 @@ const Routes = [
   {path: "new-country", component: NewCountryComponent },
   {path: "new-place/:id", component: NewPlaceComponent },
   {path: "accommodationType-list", component: AccommodationTypeListComponent},
-  {path: "new-accommodationType", component: NewAccommodationTypeComponent}
+  {path: "new-accommodationType", component: NewAccommodationTypeComponent},
+  {path: "unapproved-accommodations", component: UnapprovedAccommodationsComponent }
 ]
 
 @NgModule({
@@ -90,7 +92,8 @@ const Routes = [
     AccommodationTypeListComponent,
     NewAccommodationTypeComponent,
     MapComponent, 
-    NotificationsComponent
+    NotificationsComponent, 
+    UnapprovedAccommodationsComponent
   ],
   imports: [
     BrowserModule,
