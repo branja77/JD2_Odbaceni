@@ -50,6 +50,11 @@ namespace BookingApp.Controllers
                 return BadRequest();
             }
 
+            if(roomReservation.StartDate <= DateTime.Now || roomReservation.EndDate <= roomReservation.StartDate)
+            {
+                return BadRequest();
+            }
+
             try
             {
                 roomReservation.User = db.Users.Find(RequestContext.Principal.Identity.GetUserId());
@@ -83,6 +88,12 @@ namespace BookingApp.Controllers
             {
                 return BadRequest();
             }
+
+            if (roomReservation.StartDate <= DateTime.Now || roomReservation.EndDate <= roomReservation.StartDate)
+            {
+                return BadRequest();
+            }
+
             roomReservation.Timestamp = DateTime.Now;
             roomReservation.User = db.Users.Find(RequestContext.Principal.Identity.GetUserId());
             db.Entry(roomReservation).State = EntityState.Modified;
