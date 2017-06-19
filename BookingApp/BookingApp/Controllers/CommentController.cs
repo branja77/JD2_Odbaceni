@@ -49,11 +49,23 @@ namespace BookingApp.Controllers
             }
             try
             {
-                comm.User = db.Users.Find(RequestContext.Principal.Identity.GetUserId());
-                comm.Accomodation = db.Accommodations.Find(comm.Accomodation.Id);
-                db.Comments.Add(comm);
-                db.SaveChanges();
-                return CreatedAtRoute("DefaultApi", new { id = comm.Id }, comm);
+                string userId = RequestContext.Principal.Identity.GetUserId();
+                BAIdentityUser user = db.Users.Include(u=> u.RoomReservations.Select(r => r.Room).Select(a => a.Accomodation)).SingleOrDefault(u => u.Id == userId);
+                foreach(RoomReservation res in user.RoomReservations)
+                {
+                    Accommodation acc = res.Room.Accomodation;
+                    if(acc.Id == comm.Accomodation.Id && res.EndDate < DateTime.Now)
+                    {
+                        Accommodation accommodation = db.Accommodations.Find(comm.Accomodation.Id);
+                        comm.User = user;
+                        comm.Accomodation = accommodation;
+                        db.Comments.Add(comm);
+                        db.SaveChanges();
+                        accommodation.AvrageGrade = db.Comments.Where(u => u.Accomodation.Id == accommodation.Id).Select( u => u.Grade).ToArray().Average();
+                        db.SaveChanges();
+                        return CreatedAtRoute("DefaultApi", new { id = comm.Id }, comm);
+                    }
+                } 
             }
             catch (Exception ex)
             {
@@ -61,7 +73,7 @@ namespace BookingApp.Controllers
                 return BadRequest();
             }
 
-
+            return BadRequest();
         }
 
         [ResponseType(typeof(void))]

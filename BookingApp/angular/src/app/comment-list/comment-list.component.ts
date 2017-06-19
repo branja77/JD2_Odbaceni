@@ -28,6 +28,8 @@ export class CommentListComponent implements OnInit {
     onSubmit(comment: Comment){
       this.newComment = comment;
       this.newComment.accomodation = this.accommodation;
-      this.commentsService.postComment(this.newComment);
+      this.commentsService.postComment(this.newComment).then(f => {
+          window.location.reload();
+      });
     }
 }
