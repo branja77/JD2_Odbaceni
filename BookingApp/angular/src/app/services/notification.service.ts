@@ -19,7 +19,7 @@ export class NotificationService {
    
     constructor() {  
         // Constructor initialization  
-        this.connectionEstablished = new EventEmitter < Boolean > ();   ();
+        this.connectionEstablished = new EventEmitter < Boolean > ();
         this.notificationReceived = new EventEmitter < string > (); 
         this.timeReceived = new EventEmitter < string > ();   
         this.connectionExists = false;  

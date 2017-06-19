@@ -8,7 +8,7 @@ using BookingApp.Hubs;
 
 namespace BookingApp.Controllers
 {
-    public class WSClickController : ApiController
+    public class NotificationController : ApiController
     {
         public static int ClickCount { get; set; }
         // GET: api/WSClick
