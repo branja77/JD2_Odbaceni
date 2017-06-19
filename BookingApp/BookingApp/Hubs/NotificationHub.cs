@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using System.Timers;
 
 namespace BookingApp.Hubs
 {
@@ -14,7 +15,8 @@ namespace BookingApp.Hubs
     public class NotificationHub : Hub
     {
         private static IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
- 
+        private static Timer t = new Timer();
+
         public void Hello()
         {
             Clients.All.hello("Hello from server");
@@ -22,20 +24,42 @@ namespace BookingApp.Hubs
  
         public static void Notify(int clickCount)
         {
-            hubContext.Clients.Group("Admins").clickNotification($"Kliknuto je: {clickCount} puta");
+            hubContext.Clients.Group("Admins").clickNotification($"Clicks: {clickCount}");
         }
- 
-        public override Task OnConnected()
+
+        public void GetTime()
+        {
+            Clients.All.setRealTime(DateTime.Now.ToString("h:mm:ss tt"));
+        }
+
+        public void TimeServerUpdates()
+       {
+           t.Interval = 1000;
+            t.Start();
+            t.Elapsed += OnTimedEvent;
+        }
+
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            GetTime();
+        }
+
+        public void StopTimeServerUpdates()
+        {
+            t.Stop();   
+        }
+    
+    public override Task OnConnected()
         {
             //Ako vam treba pojedinacni User
             //var identityName = Context.User.Identity.Name;
 
             Groups.Add(Context.ConnectionId, "Admins");
 
-            if (Context.User.IsInRole("Admin"))
-            {
+            //if (Context.User.IsInRole("Admin"))
+            //{
                 
-            }
+            //}
 
             return base.OnConnected();
         }
@@ -44,10 +68,10 @@ namespace BookingApp.Hubs
         {
             Groups.Remove(Context.ConnectionId, "Admins");
 
-            if (Context.User.IsInRole("Admin"))
-            {
+            //if (Context.User.IsInRole("Admin"))
+            //{
                 
-            }
+            //}
             return base.OnDisconnected(stopCalled);
         }
     }

@@ -40,7 +40,7 @@ import {AccommodationTypeListComponent} from './accommodationType-list/accommoda
 import { NewAccommodationTypeComponent } from './new-accommodationType/new-accommodationType.component';
 import { MapComponent } from './map/map.component';
 import { NotificationService } from './services/notification.service';
-import { NotificationsComponent } from './notifications/notifications.component
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 const Routes = [
