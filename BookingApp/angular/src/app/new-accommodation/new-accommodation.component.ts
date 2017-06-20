@@ -19,7 +19,7 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 @Component({
   selector: 'app-new-accommodation',
   templateUrl: './new-accommodation.component.html',
-  providers: [HttpAccommodationsService, HttpPlacesService, HttpAccommodationTypesService]
+  providers: [HttpAccommodationsService, HttpPlacesService, HttpAccommodationTypesService, HttpClickService]
 })
 export class NewAccommodationComponent {
   public accommodation: Accommodation;
@@ -44,6 +44,7 @@ export class NewAccommodationComponent {
   }
 
     ngOnInit(){
+      debugger
       this.placesService.getPlaces().then(places => {this.places = places})
       .catch(error => this.error = error);
       this.accommodationTypesService.getAccommodationTypes().then(accommodationTypes => {this.accommodationTypes = accommodationTypes})
