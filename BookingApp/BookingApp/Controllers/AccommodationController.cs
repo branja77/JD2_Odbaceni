@@ -89,13 +89,13 @@ namespace BookingApp.Controllers
             string userId = RequestContext.Principal.Identity.GetUserId();
             IList<string> roles =  userManager.GetRoles<BAIdentityUser, string>(userId);
 
-            Accommodation accommodationForChange = db.Accommodations.Find(accommodation.Id);
+            Accommodation accommodationForChange = db.Accommodations.Include(u => u.Owner).SingleOrDefault( u => u.Id == accommodation.Id);
             if(accommodationForChange.Approved == false && accommodation.Approved == true &&
                 !roles.Contains("Admin"))
             {
                 return StatusCode(HttpStatusCode.Unauthorized);
             }
-            else if (accommodationForChange.Owner.Id != userId)
+            else if (accommodationForChange.Owner.Id != userId && !roles.Contains("Admin"))
             {
                 return StatusCode(HttpStatusCode.Unauthorized);
             }

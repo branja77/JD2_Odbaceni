@@ -4,7 +4,6 @@ import {
   ActivatedRoute
 } from '@angular/router';
 
-import { NotificationService } from '../services/notification.service';
 import { HttpClickService } from '../services/http-click.service';
 
 import {NgForm} from '@angular/forms';
@@ -31,7 +30,6 @@ export class NewAccommodationComponent {
      private accommodationsService: HttpAccommodationsService,
       private placesService: HttpPlacesService,
        private accommodationTypesService: HttpAccommodationTypesService,
-       private ngZone: NgZone,  
        private http: HttpClickService
        ){}
 
@@ -40,7 +38,7 @@ export class NewAccommodationComponent {
       debugger
       this.accommodationsService.postAccommodation(this.accommodation).then(data =>
       {
-          this.http.click().subscribe(data => console.log(data));
+          this.http.notify('Admin').subscribe(data => console.log(data));
       });
   }
 

@@ -10,11 +10,10 @@ namespace BookingApp.Controllers
 {
     public class NotificationController : ApiController
     {
-        public static int ClickCount { get; set; }
         // GET: api/WSClick
-        public IHttpActionResult Post()
+        public IHttpActionResult Post(string id)
         {
-            NotificationHub.Notify(++ClickCount);
+            NotificationHub.Notify(id);
             return Ok("Hello");
         }
    

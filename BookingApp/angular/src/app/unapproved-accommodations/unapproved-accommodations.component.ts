@@ -6,15 +6,18 @@ import {
 import {Observable} from 'rxjs/Observable';
 import { Accommodation } from '../model/accommodation.model';
 import { HttpAccommodationsService} from '../services/http-accommodations.service';
+import { HttpClickService } from '../services/http-click.service';
+
 @Component({
   selector: 'unapproved-accommodations',
   templateUrl: './unapproved-accommodations.component.html',
+  providers: [HttpClickService]
 })
 export class UnapprovedAccommodationsComponent implements OnInit {
   public name: string;
   accommodations: Accommodation[]; 
   error: any;
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private accommodationsService: HttpAccommodationsService) {
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClickService, private accommodationsService: HttpAccommodationsService) {
    }
 
   ngOnInit(): void {
@@ -25,8 +28,9 @@ export class UnapprovedAccommodationsComponent implements OnInit {
     this.accommodationsService.getAccommodation(accId).then(accommodation => {
       accommodation.Approved = true;
       this.accommodationsService.putAccommodation(accommodation).
-      then(f => {
-        window.location.reload();
+      then(f =>
+      {
+          this.http.notify('Manager').subscribe(data => window.location.reload());      
       });
     });
     

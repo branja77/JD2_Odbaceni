@@ -57,7 +57,7 @@ export class NotificationsComponent implements OnInit {
 
   public onClick() {
     if (this.isConnected) {
-      this.http.click().subscribe(data => console.log(data));
+      this.http.notify("").subscribe(data => console.log(data));
     }
   } 
 

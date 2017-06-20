@@ -32,8 +32,6 @@ export class NotificationService {
         this.registerForTimerEvents(); 
 
         // call the connecion start method to start the connection to send and receive events. 
-        this.startConnection(); 
-        
     }  
     // method to hit from client  
     public sendHello() {  
@@ -41,7 +39,7 @@ export class NotificationService {
         this.proxy.invoke('Hello');  
     }  
     // check in the browser console for either signalr connected or not  
-    private startConnection(): void {  
+    public startConnection(): void {  
         this.connection.start().done((data: any) => {  
             console.log('Now connected ' + data.transport.name + ', connection ID= ' + data.id);  
             this.connectionEstablished.emit(true);  
@@ -53,8 +51,9 @@ export class NotificationService {
     }  
     private registerOnServerEvents(): void {  
         
-        this.proxy.on('clickNotification', (data: string) => {  
-            alert('New Accommodation created');  
+        this.proxy.on('accommodationNotification', (data: string) => {  
+            alert(data);  
+            console.log(data);
             this.notificationReceived.emit(data);  
         });  
     }

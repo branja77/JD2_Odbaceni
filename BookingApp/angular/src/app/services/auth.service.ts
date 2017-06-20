@@ -30,6 +30,7 @@ export class AuthService{
                     const token = obj['token_type'] + ' ' + obj['access_token'];
                     localStorage.setItem("token",token);
                     localStorage.setItem("username",user.username);
+                    this.notifService.startConnection();
                     this.checkConnection();
                 }else{
                     alert("Oops, something went wrong. Try again.");

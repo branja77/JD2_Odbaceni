@@ -7,6 +7,7 @@ using System.Web.UI;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using System.Timers;
+using BookingApp.Models;
 
 namespace BookingApp.Hubs
 {
@@ -16,15 +17,23 @@ namespace BookingApp.Hubs
     {
         private static IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
         private static Timer t = new Timer();
+        private BAContext db = new BAContext();
 
         public void Hello()
         {
             Clients.All.hello("Hello from server");
         }
  
-        public static void Notify(int clickCount)
+        public static void Notify(string role)
         {
-            hubContext.Clients.Group("Admins").clickNotification($"Clicks: {clickCount}");
+            if (role == "Admin")
+            {
+                hubContext.Clients.Group("Admins").accommodationNotification("New Accommodation Created For Approve");
+            }
+            if(role == "Manager")
+            {
+                hubContext.Clients.Group("Admins").accommodationNotification("New Accommodation Is Approved");
+            }
         }
 
         public void GetTime()
@@ -52,14 +61,19 @@ namespace BookingApp.Hubs
     public override Task OnConnected()
         {
             //Ako vam treba pojedinacni User
-            var identityName = Context.User.Identity.Name;
-
             Groups.Add(Context.ConnectionId, "Admins");
 
-            //if (Context.User.IsInRole("Admin"))
-            //{
+            var user = Context.Request.GetHttpContext().Request.Headers;
+
+            if (Context.User.IsInRole("Admin"))
+            {
                 
-            //}
+            }
+
+            if (Context.User.IsInRole("Manager"))
+            {
+                Groups.Add(Context.ConnectionId, "Managers");
+            }
 
             return base.OnConnected();
         }
