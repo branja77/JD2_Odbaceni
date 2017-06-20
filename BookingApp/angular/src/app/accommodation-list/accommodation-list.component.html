@@ -40,8 +40,8 @@
     </form>
 </div>
 <div class="w3-content" style="max-width:1532px;">
-  <div class="w3-row-padding w3-padding-16" *ngFor="let accommodation of accommodations">
-      <div *ngIf="(accommodation.Place)">
+  <div class="w3-row-padding w3-padding-16" *ngFor="let accommodation of approvedAccommodations; let j = index">
+      <div *ngIf="(accommodation.Place) && (j >= (page - 1)*3) &&  (j < (page - 1) * 3 + 3)">
         <app-accommodation *ngIf="(accommodation.Place.Name == name || name==null) && (accommodation.Approved == true)" [accommodation]="accommodation"></app-accommodation>
       </div>
       <div *ngIf="(!accommodation.Place)">
@@ -49,6 +49,11 @@
       </div>
   </div>
 </div>
+<span *ngFor="let acc of approvedAccommodations; let i = index;">
+    <span *ngIf="i % 3 == 0">
+        <a [routerLink]="['/accommodation-list']" (click)="changePage(i/3 + 1)">{{i/3 + 1 }}</a>
+    </span>
+</span>
 <div style="padding: 50px"> 
   <a [routerLink]="['/new-accommodation']" class="w3-bar-item w3-button w3-red w3-mobile" >New Accommodation</a>
   <a [routerLink]="['/unapproved-accommodations']" class="w3-bar-item w3-button w3-red w3-mobile" >Unapproved Accommodations</a>

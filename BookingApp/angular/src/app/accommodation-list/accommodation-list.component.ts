@@ -17,15 +17,26 @@ import { FilterService } from "../services/filter.service";
 export class AccommodationListComponent implements OnInit {
   public name: string;
   accommodations: Accommodation[]; 
+  approvedAccommodations: Accommodation[];
   public filter: Filter;
   public query: string;
+  page: number;
   error: any;
     constructor(private router: Router,private filterService: FilterService ,private activatedRoute: ActivatedRoute, private accommodationsService: HttpAccommodationsService) {
       activatedRoute.params.subscribe(params => {this.name = params["name"]});
+      this.approvedAccommodations = [];
+      this.page = 1;
    }
 
   ngOnInit(): void {
-    this.accommodationsService.getAccommodations().then(accommodations => {this.accommodations = accommodations;});
+    this.accommodationsService.getAccommodations().then(accommodations => {
+      this.accommodations = accommodations;
+      this.accommodations.forEach(element => {
+        if(element.Approved){
+          this.approvedAccommodations.push(element);
+        }
+      });
+    });
    this.filter = new Filter();
     this.filter.MinPrice = 0;
     this.filter.MaxPrice = 10000;
@@ -43,6 +54,12 @@ export class AccommodationListComponent implements OnInit {
 
     this.filterService.filterAccommodation(this.query).subscribe((result: Array<Accommodation>) => {
       this.accommodations = result;
+      this.approvedAccommodations = [];
+      this.accommodations.forEach(element => {
+        if(element.Approved){
+          this.approvedAccommodations.push(element);
+        }
+      });
       console.log(this.accommodations);
       console.log('filter :');
       console.log(this.filter);
@@ -50,5 +67,9 @@ export class AccommodationListComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+
+  changePage(selectedPage: number){
+    this.page = selectedPage; 
   }
 }
