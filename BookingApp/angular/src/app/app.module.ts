@@ -42,7 +42,10 @@ import { MapComponent } from './map/map.component';
 import { NotificationService } from './services/notification.service';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UnapprovedAccommodationsComponent } from './unapproved-accommodations/unapproved-accommodations.component';
-
+import { MaterialModule } from "@angular/material";
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FilterService} from './services/filter.service';
+import {SearchComponent} from './search/search.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -93,7 +96,8 @@ const Routes = [
     NewAccommodationTypeComponent,
     MapComponent, 
     NotificationsComponent, 
-    UnapprovedAccommodationsComponent
+    UnapprovedAccommodationsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -103,8 +107,9 @@ const Routes = [
     RouterModule.forRoot(Routes),
         //prilikom import-a mape prosleđujemo Google API key koji dobijamo preko google konzole
     AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'}),
-    ImageUploadModule.forRoot()
-    
+    ImageUploadModule.forRoot(),
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService, 
@@ -116,7 +121,8 @@ const Routes = [
     HttpCountriesService,
     HttpRoomReservationsService, 
     HttpRegionsService, 
-    NotificationService
+    NotificationService,
+    FilterService
   ],
   bootstrap: [AppComponent]
 })
