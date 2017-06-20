@@ -7,7 +7,12 @@ using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http.Cors;
 using System.Net.Http.Headers;
-
+using System.Web.Http.OData.Builder;
+    using System.Web.Http.OData.Extensions;
+    using BookingApp.Models;
+using System.Web.Http.OData.Builder;
+using System.Web.Http.OData.Extensions;
+using BookingApp.Models;
 namespace BookingApp
 {
     public static class WebApiConfig
@@ -30,8 +35,17 @@ namespace BookingApp
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-			
-			config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+           
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Accommodation>("Accommodations");
+            builder.EntitySet<AccommodationType>("AccommodationTypes");
+            builder.EntitySet<Comment>("Comments");
+            builder.EntitySet<BAIdentityUser>("Users");
+            builder.EntitySet<Place>("Places");
+            builder.EntitySet<Room>("Rooms");
+            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
     }
