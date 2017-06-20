@@ -31,29 +31,19 @@ export class NewAccommodationComponent {
   error: any;
     constructor(private router: Router, private activatedRoute: ActivatedRoute,
      private accommodationsService: HttpAccommodationsService,
-<<<<<<< HEAD
       private placesService: HttpPlacesService,
-       private accommodationTypesService: HttpAccommodationTypesService,
-       private http: HttpClickService
-       ){}
-=======
-     private placesService: HttpPlacesService,
+     private accommodationTypesService: HttpAccommodationTypesService,
+     private http: HttpClickService,
      private dialogRef: MdDialogRef<GoogleMapComponent>,
-     private dialog: MdDialog,
-     private accommodationTypesService: HttpAccommodationTypesService){}
->>>>>>> 2f32538228a3b3973668a9bad09a445c2474d624
+     private dialog: MdDialog){}
 
     onSubmit(accommodation: Accommodation){
       this.accommodation = accommodation;
       debugger
-<<<<<<< HEAD
       this.accommodationsService.postAccommodation(this.accommodation).then(data =>
       {
           this.http.notify('Admin').subscribe(data => console.log(data));
       });
-=======
-      this.accommodationsService.postAccommodation(this.accommodation);
->>>>>>> 2f32538228a3b3973668a9bad09a445c2474d624
   }
 
     ngOnInit(){
