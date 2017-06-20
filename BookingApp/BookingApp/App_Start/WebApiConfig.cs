@@ -10,9 +10,6 @@ using System.Net.Http.Headers;
 using System.Web.Http.OData.Builder;
     using System.Web.Http.OData.Extensions;
     using BookingApp.Models;
-using System.Web.Http.OData.Builder;
-using System.Web.Http.OData.Extensions;
-using BookingApp.Models;
 namespace BookingApp
 {
     public static class WebApiConfig

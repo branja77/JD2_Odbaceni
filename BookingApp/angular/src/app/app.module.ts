@@ -125,7 +125,8 @@ const Routes = [
     HttpRoomReservationsService, 
     HttpRegionsService, 
     NotificationService,
-    FilterService
+    FilterService,
+    //MdDialogRef
   ],
   bootstrap: [AppComponent]
 })
