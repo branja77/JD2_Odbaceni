@@ -24,7 +24,6 @@ import{ HttpAccommodationTypesService} from '../services/http-accommodationTypes
 export class NewAccommodationComponent {
   public accommodation: Accommodation;
   places: Place[];
-  isConnected: Boolean;
   notifications: string[];
   accommodationTypes: AccommodationType[];
   error: any;
@@ -32,21 +31,16 @@ export class NewAccommodationComponent {
      private accommodationsService: HttpAccommodationsService,
       private placesService: HttpPlacesService,
        private accommodationTypesService: HttpAccommodationTypesService,
-       private notifService: NotificationService, 
        private ngZone: NgZone,  
        private http: HttpClickService
-       ){
-         this.isConnected = false;
-       }
+       ){}
 
     onSubmit(accommodation: Accommodation){
       this.accommodation = accommodation;
       debugger
       this.accommodationsService.postAccommodation(this.accommodation).then(data =>
       {
-        if (this.isConnected) {
           this.http.click().subscribe(data => console.log(data));
-        }
       });
   }
 
@@ -55,15 +49,5 @@ export class NewAccommodationComponent {
       .catch(error => this.error = error);
       this.accommodationTypesService.getAccommodationTypes().then(accommodationTypes => {this.accommodationTypes = accommodationTypes})
       .catch(error => this.error = error);
-      
-      this.checkConnection();
     }
-
-    private checkConnection(){
-      this.notifService.connectionEstablished.subscribe(e => {this.isConnected = e; 
-         if (e) {
-          this.notifService.sendHello()
-        }
-    });
-  }
 }

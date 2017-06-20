@@ -2,14 +2,16 @@ import { BAIdentityUser} from '../model/baidentity-user.model';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
+import { NotificationService } from '../services/notification.service';
 
 
 @Injectable()
 export class AuthService{
     loggedIn : boolean;
+    isConnected: Boolean;
     responses: Observable<Response>;
-    constructor(private http: Http){
-        
+    constructor(private http: Http, private notifService: NotificationService){
+            this.isConnected = false;
     }
 
     logIn(user: BAIdentityUser): void{
@@ -28,6 +30,7 @@ export class AuthService{
                     const token = obj['token_type'] + ' ' + obj['access_token'];
                     localStorage.setItem("token",token);
                     localStorage.setItem("username",user.username);
+                    this.checkConnection();
                 }else{
                     alert("Oops, something went wrong. Try again.");
                 }
@@ -48,5 +51,13 @@ export class AuthService{
             return true;
         else
             return false;
+    }
+
+    private checkConnection(){
+        this.notifService.connectionEstablished.subscribe(e => {this.isConnected = e; 
+            if (e) {
+               this.notifService.sendHello()
+            }
+        });
     }
 }
