@@ -19,6 +19,7 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 @Component({
   selector: 'app-new-accommodation',
   templateUrl: './new-accommodation.component.html',
+  styles: ['agm-map {height: 400px; width: 400px;}'],
   providers: [HttpAccommodationsService, HttpPlacesService, HttpAccommodationTypesService, HttpClickService]
 })
 export class NewAccommodationComponent {
@@ -26,6 +27,10 @@ export class NewAccommodationComponent {
   places: Place[];
   accommodationTypes: AccommodationType[];
   error: any;
+  lat: number = 45.242268;
+  lng: number = 19.842954;
+  clickedLat: number;
+  clickedLong: number;
     constructor(private router: Router, private activatedRoute: ActivatedRoute,
      private accommodationsService: HttpAccommodationsService,
       private placesService: HttpPlacesService,
@@ -35,8 +40,11 @@ export class NewAccommodationComponent {
      private dialog: MdDialog){}
 
     onSubmit(accommodation: Accommodation){
-      this.accommodation = accommodation;
       debugger
+      this.accommodation = accommodation;
+      this.accommodation.Longitude = this.clickedLong;
+      this.accommodation.Latitude = this.clickedLat;
+      
       this.accommodationsService.postAccommodation(this.accommodation).then(data =>
       {
           this.http.notify('Admin').subscribe(data => console.log(data));
@@ -49,6 +57,11 @@ export class NewAccommodationComponent {
       .catch(error => this.error = error);
       this.accommodationTypesService.getAccommodationTypes().then(accommodationTypes => {this.accommodationTypes = accommodationTypes})
       .catch(error => this.error = error);
+    }
+    onClick(res:any){
+    //debugger
+    this.clickedLat = res.coords.lat;
+    this.clickedLong = res.coords.lng;
     }
 
     openMap() {

@@ -28,11 +28,6 @@
                     <option *ngFor="let place of places" [ngValue]="place">{{place.Name}}</option>
                 </select>
               </div>
-               <div>
-                <button  (click)="openMap()" color="primary" title="Select location" type="button">
-                  add_location
-                </button>
-              </div>
               <div class="w3-half">
                 <label><i class="fa fa-place"></i>Accommodation Type</label>          
                 <select name="AccomodationType"  required ngModel>
@@ -42,12 +37,23 @@
             </div>
             <div class="w3-half">
                 <label><i class="fa fa-image"></i>Accommodation Image</label>          
-                   <image-upload [url]="'assets/images/'" name="NekoIme"></image-upload>
-              </div>
+                   <image-upload [url]="'assets/images/'" name="Image"></image-upload>
+            </div>
           </div>
           <div class="w3-row-padding" style="margin:8px -16px;">
           </div>
           <button class="w3-button w3-dark-grey" type="submit">Create</button>
       </div>
     </form>
+      <div class="block-margin">
+        <agm-map #m [latitude]="lat" [longitude]="lng" [zoom]="16" (mapClick)="onClick($event)">
+            <agm-marker [latitude]="clickedLat" [longitude]="clickedLong" label="">
+                <agm-info-window [latitude]="clickedLat" [longitude]="clickedLong">
+                    <span style="color:gray;">latitude: {{clickedLat}}</span>
+                    <br/>
+                    <span style="color:gray;">longitude: {{clickedLong}}</span>
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>
   </div>
