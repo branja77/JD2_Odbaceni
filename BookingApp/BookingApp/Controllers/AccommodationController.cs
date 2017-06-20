@@ -37,6 +37,7 @@ namespace BookingApp.Controllers
 
         public IQueryable GetAccommodations()
         {
+
             return db.Accommodations.Include(u => u.AccomodationType).
                 Include(u => u.Place).
                 Include(u => u.Owner);

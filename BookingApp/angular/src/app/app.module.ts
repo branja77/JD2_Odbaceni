@@ -42,10 +42,11 @@ import { MapComponent } from './map/map.component';
 import { NotificationService } from './services/notification.service';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UnapprovedAccommodationsComponent } from './unapproved-accommodations/unapproved-accommodations.component';
-import { MaterialModule } from "@angular/material";
+import { MaterialModule, MdDialogModule, MdDialogRef } from "@angular/material";
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FilterService} from './services/filter.service';
 import {SearchComponent} from './search/search.component';
+import {GoogleMapComponent} from './google-map/google-map.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -97,7 +98,8 @@ const Routes = [
     MapComponent, 
     NotificationsComponent, 
     UnapprovedAccommodationsComponent,
-    SearchComponent
+    SearchComponent,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +111,8 @@ const Routes = [
     AgmCoreModule.forRoot({apiKey: 'AIzaSyDnihJyw_34z5S1KZXp90pfTGAqhFszNJk'}),
     ImageUploadModule.forRoot(),
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MdDialogModule
   ],
   providers: [
     AuthService, 
@@ -122,7 +125,8 @@ const Routes = [
     HttpRoomReservationsService, 
     HttpRegionsService, 
     NotificationService,
-    FilterService
+    FilterService,
+    MdDialogRef
   ],
   bootstrap: [AppComponent]
 })

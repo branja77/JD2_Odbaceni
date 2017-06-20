@@ -28,6 +28,11 @@
                     <option *ngFor="let place of places" [ngValue]="place">{{place.Name}}</option>
                 </select>
               </div>
+               <div>
+                <button md-mini-fab (click)="openMap()" color="primary" title="Select location" type="button">
+                    <md-icon>add_location</md-icon>
+                </button>
+              </div>
               <div class="w3-half">
                 <label><i class="fa fa-place"></i>Accommodation Type</label>          
                 <select name="AccomodationType"  required ngModel>
