@@ -52,7 +52,7 @@ namespace BookingApp.Hubs
     public override Task OnConnected()
         {
             //Ako vam treba pojedinacni User
-            //var identityName = Context.User.Identity.Name;
+            var identityName = Context.User.Identity.Name;
 
             Groups.Add(Context.ConnectionId, "Admins");
 

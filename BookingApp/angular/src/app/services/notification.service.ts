@@ -54,7 +54,7 @@ export class NotificationService {
     private registerOnServerEvents(): void {  
         
         this.proxy.on('clickNotification', (data: string) => {  
-            console.log('received notification: ' + data);  
+            alert('New Accommodation created');  
             this.notificationReceived.emit(data);  
         });  
     }

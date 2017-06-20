@@ -33,6 +33,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   private subscribeForNotifications () {
+    debugger
     this.notifService.notificationReceived.subscribe(e => this.onNotification(e));
   }
 
@@ -44,6 +45,7 @@ export class NotificationsComponent implements OnInit {
   }
 
   subscribeForTime() {
+    debugger
     this.notifService.timeReceived.subscribe(e => this.onTimeEvent(e));
   }
 
