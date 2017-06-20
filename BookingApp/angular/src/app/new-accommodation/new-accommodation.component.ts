@@ -4,11 +4,8 @@ import {
   ActivatedRoute
 } from '@angular/router';
 
-<<<<<<< HEAD
 import { HttpClickService } from '../services/http-click.service';
 
-=======
->>>>>>> 2f32538228a3b3973668a9bad09a445c2474d624
 import {NgForm} from '@angular/forms';
 import { Accommodation } from '../model/accommodation.model';
 import { Place } from '../model/place.model';
@@ -17,7 +14,7 @@ import { HttpAccommodationsService} from '../services/http-accommodations.servic
 import{ HttpPlacesService} from '../services/http-places.service';
 import{ HttpAccommodationTypesService} from '../services/http-accommodationTypes.service';
 import { MdDialog, MdDialogRef } from '@angular/material';
-import {GoogleMapComponent} from '../google-map/google-map.component';
+//import {GoogleMapComponent} from '../google-map/google-map.component';
 
 @Component({
   selector: 'app-new-accommodation',
@@ -34,7 +31,7 @@ export class NewAccommodationComponent {
       private placesService: HttpPlacesService,
      private accommodationTypesService: HttpAccommodationTypesService,
      private http: HttpClickService,
-     private dialogRef: MdDialogRef<GoogleMapComponent>,
+     //private dialogRef: MdDialogRef<GoogleMapComponent>,
      private dialog: MdDialog){}
 
     onSubmit(accommodation: Accommodation){
