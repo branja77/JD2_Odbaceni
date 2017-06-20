@@ -46,7 +46,7 @@ import { MaterialModule, MdDialogModule, MdDialogRef } from "@angular/material";
 import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FilterService} from './services/filter.service';
 import {SearchComponent} from './search/search.component';
-import {GoogleMapComponent} from './google-map/google-map.component';
+//import {GoogleMapComponent} from './google-map/google-map.component';
 
 const Routes = [
   {path: "home", component: HomeComponent},
@@ -99,7 +99,7 @@ const Routes = [
     NotificationsComponent, 
     UnapprovedAccommodationsComponent,
     SearchComponent,
-    GoogleMapComponent
+    //GoogleMapComponent
   ],
   imports: [
     BrowserModule,
@@ -125,8 +125,7 @@ const Routes = [
     HttpRoomReservationsService, 
     HttpRegionsService, 
     NotificationService,
-    FilterService,
-    MdDialogRef
+    FilterService
   ],
   bootstrap: [AppComponent]
 })

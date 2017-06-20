@@ -47,14 +47,14 @@ export class NewAccommodationComponent {
     openMap() {
       debugger
       alert("otvori mape");
-        let dialogRef = this.dialog.open(GoogleMapComponent);
-        dialogRef.afterClosed().subscribe((res) => {
-            console.log("Upesno zatvoren map dialog");
-            if (res == undefined) {
-                return;
-            }
-            this.accommodation.Latitude = res.lat;
-            this.accommodation.Longitude = res.lng;
-        });
+        // let dialogRef = this.dialog.open(GoogleMapComponent);
+        // dialogRef.afterClosed().subscribe((res) => {
+        //     console.log("Upesno zatvoren map dialog");
+        //     if (res == undefined) {
+        //         return;
+        //     }
+        //     this.accommodation.Latitude = res.lat;
+        //     this.accommodation.Longitude = res.lng;
+        // });
     } 
 }
