@@ -11,15 +11,15 @@ using System.Web.Http.ModelBinding;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Routing;
 using BookingApp.Models;
+using System.Web.Http.OData.Builder;
+using System.Web.Http.OData.Extensions;
 
 namespace BookingApp.Controllers
 {
     /*
     The WebApiConfig class may require additional changes to add a route for this controller. Merge these statements into the Register method of the WebApiConfig class as applicable. Note that OData URLs are case sensitive.
 
-    using System.Web.Http.OData.Builder;
-    using System.Web.Http.OData.Extensions;
-    using BookingApp.Models;
+
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
     builder.EntitySet<Accommodation>("Accommodations");
     builder.EntitySet<AccommodationType>("AccommodationTypes"); 
@@ -37,7 +37,7 @@ namespace BookingApp.Controllers
         [EnableQuery]
         public IQueryable<Accommodation> GetAccommodations()
         {
-            return db.Accommodations.Include(u=>u.Rooms).Include(u=>u.Place);
+            return db.Accommodations.Include(u=>u.Place).Include(u => u.Owner);
         }
 
         // GET: odata/Accommodations(5)

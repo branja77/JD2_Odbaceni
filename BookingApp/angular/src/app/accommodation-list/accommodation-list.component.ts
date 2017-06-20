@@ -38,7 +38,7 @@ export class AccommodationListComponent implements OnInit {
 //and Rooms/any(r:r/PricePerNight lt 1000 and r/PricePerNight gt 1) and AverageGrade gt 1 and AverageGrade lt 10 and Place/Name eq 'Gacko' and Name eq 'Klinje'
     this.query = `odata/Accommodations?$filter=Rooms/any(tag:tag/BedCount eq ${this.filter.BedCount})
   and Rooms/any(r:r/PricePerNight lt ${this.filter.MaxPrice} and r/PricePerNight gt ${this.filter.MinPrice}) and AvrageGrade gt ${this.filter.MinRate} 
-  and AvrageGrade lt ${this.filter.MaxRate} and Place/Name eq '${this.filter.Place}' `;
+  and AvrageGrade lt ${this.filter.MaxRate} and Place/Name eq '${this.filter.Place}' and Approved eq true`;
 //this.query = `odata/AccomodationsQuery`;
 
     this.filterService.filterAccommodation(this.query).subscribe((result: Array<Accommodation>) => {
@@ -51,5 +51,4 @@ export class AccommodationListComponent implements OnInit {
         console.log(error);
       });
   }
-
 }
