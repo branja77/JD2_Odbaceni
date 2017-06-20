@@ -1,4 +1,44 @@
-<app-search></app-search>
+<div style="margin-left: 20px; margin-top: 10px">
+    <h3>Filter</h3>
+    <form (ngSubmit)="onSubmit(searchform)" name="searchform" style="width: 100%">
+
+        <div>
+            <h4>Place</h4>
+            <md-input-container style="width: 90%">
+                <input mdInput type="text" [(ngModel)]="filter.Place" name="Place">
+            </md-input-container>
+        </div>
+        <div>
+             <h4>Bed count</h4>
+            <md-input-container style="width: 90%">
+                <input mdInput  type="number" name="BedCount" [(ngModel)]="filter.BedCount">
+            </md-input-container>
+        </div>
+        <div>
+            <h4>Price per night($)</h4>
+            <md-input-container style="width: 80px">
+                <input mdInput type="number" [(ngModel)]="filter.MinPrice" name="MinPrice">
+            </md-input-container>
+            <md-input-container style="width: 80px">
+                <input mdInput type="number" name="MaxPrice" [(ngModel)]="filter.MaxPrice"/>
+            </md-input-container>
+        </div>
+        <div>
+            <h4>Rate</h4>
+            <md-input-container style="width: 80px">
+                <input mdInput type="number" name="MinRate" [(ngModel)]="filter.MinRate"/>
+            </md-input-container>
+            <md-input-container style="width: 80px">
+                <input mdInput type="number" min="1" max="5" name="MaxRate" [(ngModel)]="filter.MaxRate"/>
+            </md-input-container>
+        </div>
+        <div></div>
+        <div style="margin-left: 20px">
+            <h4></h4>
+            <button md-raised-button color="primary" type="submit">Search</button>
+        </div>
+    </form>
+</div>
 <div class="w3-content" style="max-width:1532px;">
   <div class="w3-row-padding w3-padding-16" *ngFor="let accommodation of accommodations">
       <app-accommodation *ngIf="(accommodation.Place.Name == name || name==null) && (accommodation.Approved == true)" [accommodation]="accommodation"></app-accommodation>
