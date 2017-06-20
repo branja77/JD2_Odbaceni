@@ -26,11 +26,13 @@ export class AuthService{
         this.http.post('http://localhost:54042/oauth/token', params, opts).subscribe(
             (data) => {
                 if(data.status == 200){
+                    let role = data.headers.get('role');
+                    console.log(role);
                     let obj = data.json();
                     const token = obj['token_type'] + ' ' + obj['access_token'];
                     localStorage.setItem("token",token);
                     localStorage.setItem("username",user.username);
-                    this.notifService.startConnection();
+                    localStorage.setItem("role", role);
                     this.checkConnection();
                 }else{
                     alert("Oops, something went wrong. Try again.");
@@ -45,6 +47,7 @@ export class AuthService{
     logOut(): void{
         localStorage.removeItem("token");
         localStorage.removeItem("username");
+        localStorage.removeItem("role");
     }
 
     isLoggedIn(): boolean{

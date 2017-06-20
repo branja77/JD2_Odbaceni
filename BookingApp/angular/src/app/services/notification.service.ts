@@ -30,7 +30,7 @@ export class NotificationService {
         // register on server events  
         this.registerOnServerEvents();  
         this.registerForTimerEvents(); 
-
+        this.startConnection();
         // call the connecion start method to start the connection to send and receive events. 
     }  
     // method to hit from client  
@@ -51,10 +51,19 @@ export class NotificationService {
     }  
     private registerOnServerEvents(): void {  
         
-        this.proxy.on('accommodationNotification', (data: string) => {  
-            alert(data);  
-            console.log(data);
-            this.notificationReceived.emit(data);  
+        this.proxy.on('accommodationNotification', (data: string) => {
+            if(localStorage.getItem("role") == "Admin" && 
+            data == "New Accommodation Created For Approve"){
+                alert(data);  
+                console.log(data);
+                this.notificationReceived.emit(data);  
+            }
+            if(localStorage.getItem("role") == "Manager" && 
+            data == "New Accommodation Is Approved"){
+                alert(data);  
+                console.log(data);
+                this.notificationReceived.emit(data);  
+            }
         });  
     }
 

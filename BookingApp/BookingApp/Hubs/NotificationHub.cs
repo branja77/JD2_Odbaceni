@@ -32,7 +32,7 @@ namespace BookingApp.Hubs
             }
             if(role == "Manager")
             {
-                hubContext.Clients.Group("Admins").accommodationNotification("New Accommodation Is Approved");
+                hubContext.Clients.Group("Managers").accommodationNotification("New Accommodation Is Approved");
             }
         }
 
@@ -61,19 +61,21 @@ namespace BookingApp.Hubs
     public override Task OnConnected()
         {
             //Ako vam treba pojedinacni User
+            //sve ubacujem, jer ne znam kako da izvucem UserId
             Groups.Add(Context.ConnectionId, "Admins");
+            Groups.Add(Context.ConnectionId, "Managers");
 
-            var user = Context.Request.GetHttpContext().Request.Headers;
+            //var user = Context.Request.GetHttpContext().Request.Headers;
 
-            if (Context.User.IsInRole("Admin"))
-            {
+            //if (Context.User.IsInRole("Admin"))
+            //{
                 
-            }
+            //}
 
-            if (Context.User.IsInRole("Manager"))
-            {
-                Groups.Add(Context.ConnectionId, "Managers");
-            }
+            //if (Context.User.IsInRole("Manager"))
+            //{
+                
+            //}
 
             return base.OnConnected();
         }
